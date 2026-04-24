@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RepoChat — Chat on GitHub, Right Where You Code</title>
+    <meta name="description" content="The only Chrome extension that brings real-time messaging, GitHub context sharing, and issue triage directly into your GitHub workflow. Free to start." />
+    <meta name="keywords" content="GitHub, chat, extension, developer tools, collaboration, Chrome extension, code review, issue triage" />
+    <meta name="author" content="RepoChat" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="RepoChat — Chat on GitHub, Right Where You Code" />
+    <meta property="og:description" content="Real-time messaging, GitHub context sharing, and issue triage directly on GitHub." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://getrepochat.com" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RepoChat — Chat on GitHub" />
+    <meta name="twitter:description" content="Real-time developer chat built directly into GitHub." />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "RepoChat",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Chrome",
+      "description": "The only Chrome extension that brings real-time messaging, GitHub context sharing, and issue triage directly into your GitHub workflow.",
+      "offers": [
+        { "@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free" },
+        { "@type": "Offer", "price": "4.99", "priceCurrency": "USD", "name": "Pro", "billingPeriod": "month" }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
