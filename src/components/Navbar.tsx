@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import Logo from './Logo'
 
 
 export default function Navbar() {
@@ -23,7 +24,8 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-inner">
         <Link to="/" className="nav-logo">
-          RepoChat
+          <Logo size={28} />
+          <span>RepoChat</span>
         </Link>
 
         <ul className={`nav-links ${mobileOpen ? 'open' : ''}`}>
