@@ -72,8 +72,8 @@ export default function Landing() {
               <a href="#install" className="btn btn-primary btn-lg">
                 Add to Chrome — Free
               </a>
-              <a href="https://github.com/10lint/RepoChat" target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-lg">
-                Star on GitHub <ArrowRight size={14} />
+              <a href="https://discord.gg/repochat" target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-lg">
+                Join Discord <ArrowRight size={14} />
               </a>
             </div>
           </ScrollReveal>

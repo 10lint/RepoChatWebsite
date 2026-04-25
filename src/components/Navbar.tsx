@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
-import Logo from './Logo'
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -23,7 +23,6 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-inner">
         <Link to="/" className="nav-logo">
-          <Logo size={32} />
           RepoChat
         </Link>
 
@@ -34,9 +33,7 @@ export default function Navbar() {
           <li><Link to="/contact">Contact</Link></li>
         </ul>
 
-        <div className={`nav-cta ${mobileOpen ? 'open' : ''}`}>
-          <a href="#install" className="btn btn-primary btn-sm">Add to Chrome — Free</a>
-        </div>
+
 
         <button className="nav-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
