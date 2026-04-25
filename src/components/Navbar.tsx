@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { MessageSquare, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+import Logo from './Logo'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -22,7 +23,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-inner">
         <Link to="/" className="nav-logo">
-          <div className="nav-logo-icon"><MessageSquare size={18} /></div>
+          <Logo size={32} />
           RepoChat
         </Link>
 

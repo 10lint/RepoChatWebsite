@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { MessageSquare, GitFork } from 'lucide-react'
+import { GitFork } from 'lucide-react'
+import Logo from './Logo'
 
 export default function Footer() {
   return (
@@ -7,8 +8,8 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <div className="nav-logo" style={{ marginBottom: 4 }}>
-              <div className="nav-logo-icon"><MessageSquare size={18} /></div>
+            <div className="nav-logo" style={{ marginBottom: 12 }}>
+              <Logo size={24} />
               RepoChat
             </div>
             <p>The developer chat extension built for GitHub. Collaborate without leaving your code.</p>
