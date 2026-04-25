@@ -8,8 +8,8 @@ import Logo from '../components/Logo'
 /* ─── Horizontal Scroll ─── */
 function HorizontalShowcase() {
   const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref })
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-66.66%'])
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-57.4%'])
 
   const items = [
     { label: 'Context Sharing', title: 'Share PRs & Issues instantly', desc: 'Select any PR or Issue on GitHub, choose a friend or group, and share — with full context attached.', img: '/RC_share_popup.png' },
