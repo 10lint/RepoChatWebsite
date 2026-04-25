@@ -172,7 +172,7 @@ export default function Landing() {
             </div>
           </ScrollReveal>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
+          <div className="mini-features-grid">
             {[
               { icon: <MessageSquare size={18} />, title: 'DM & Group Chat', desc: 'Real-time messaging with friends and groups.' },
               { icon: <GitPullRequest size={18} />, title: 'GitHub Context', desc: 'Attach PRs, Issues, and branches to any message.' },
@@ -182,9 +182,7 @@ export default function Landing() {
               { icon: <Zap size={18} />, title: 'Theming', desc: '20+ accent colors, dark/light mode, compact layout.' },
             ].map((f, i) => (
               <ScrollReveal key={i} delay={(i % 3) as 0 | 1 | 2 | 3}>
-                <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: 24, transition: 'border-color .3s', cursor: 'default', height: '100%' }}
-                  onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--border-hover)')}
-                  onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--border)')}>
+                <div className="mini-feature-card">
                   <div className="card-icon">{f.icon}</div>
                   <h4 className="h4">{f.title}</h4>
                   <p className="body-sm mt-2">{f.desc}</p>
