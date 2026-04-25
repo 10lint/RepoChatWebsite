@@ -1,85 +1,35 @@
 import { useRef } from 'react'
-import { Shield, Zap, Globe, ArrowRight, GitFork, CheckSquare, Code, Share2 } from 'lucide-react'
+import { ArrowRight, Shield, Zap, MessageSquare, GitPullRequest, Tag, ClipboardList, Share2 } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
 import Logo from '../components/Logo'
 
-// Stacking Card Component
-const StackingCard = ({ index, title, description, image, icon, reverse = false }: any) => {
-  return (
-    <div 
-      className="stacking-card"
-      style={{ 
-        position: 'sticky', 
-        top: `calc(10vh + ${index * 40}px)`, 
-        marginBottom: '10vh',
-        zIndex: index 
-      }}
-    >
-      <div className={`card stack-card-inner ${reverse ? 'reverse' : ''}`}>
-        <div style={{ flex: 1 }}>
-          <div className="card-icon">{icon}</div>
-          <h3 className="heading-md">{title}</h3>
-          <p className="text-lg mt-4">{description}</p>
-        </div>
-        <div style={{ flex: 1, borderRadius: 16, overflow: 'hidden', border: '1px solid var(--surface-border)', boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
-          <img src={image} alt={title} style={{ width: '100%', display: 'block' }} />
-        </div>
-      </div>
-    </div>
-  )
-}
+/* ─── Horizontal Scroll ─── */
+function HorizontalShowcase() {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref })
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-66.66%'])
 
-// Horizontal Scroll Component
-const HorizontalScrollSection = () => {
-  const targetRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  })
-
-  // Map vertical scroll (0 to 1) to horizontal translation (0% to -66.66%)
-  // We have 3 items, each taking 100vw. To see the last one, we must translate by -66.66% of the container width (which is 300vw).
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66.66%"])
-
-  const horizontalItems = [
-    {
-      title: "Comment on PRs & Issues",
-      desc: "Attach code snippets and branch references instantly.",
-      image: "/RC_comment.png",
-      icon: <Code size={24} />
-    },
-    {
-      title: "Frictionless Sharing",
-      desc: "Share specific lines of code instantly.",
-      image: "/RC_share_popup.png",
-      icon: <Share2 size={24} />
-    },
-    {
-      title: "Shared via RepoChat",
-      desc: "Perfect context, automatically formatted.",
-      image: "/RC_shared_via_RC.png",
-      icon: <GitFork size={24} />
-    }
+  const items = [
+    { label: 'Context Sharing', title: 'Share PRs & Issues instantly', desc: 'Select any PR or Issue on GitHub, choose a friend or group, and share — with full context attached.', img: '/RC_share_popup.png' },
+    { label: 'Comment on GitHub', title: 'Post comments from chat', desc: 'Write comments and post them directly to GitHub Issues. No tab switching needed.', img: '/RC_comment.png' },
+    { label: 'Shared via RepoChat', title: 'Perfect context cards', desc: 'Recipients see a formatted context card with PR title, description, and your message — attributed with "Shared via RepoChat".', img: '/RC_shared_via_RC.png' },
   ]
 
   return (
-    <section ref={targetRef} style={{ position: 'relative', height: '400vh', background: 'var(--bg-alt)' }}>
-      <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
-        
-        {/* Background glow for this section */}
-        <div className="mesh-glow" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '800px', height: '800px', opacity: 0.05 }} />
-
-        <motion.div style={{ x, display: 'flex', width: '300vw' }}>
-          {horizontalItems.map((item, i) => (
-            <div key={i} style={{ width: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 5vw' }}>
-              <div className="card horizontal-item-card">
-                <div className="card-icon" style={{ marginBottom: 24 }}>{item.icon}</div>
-                <h3 className="heading-lg mb-4">{item.title}</h3>
-                <p className="text-lg mb-10" style={{ maxWidth: 600 }}>{item.desc}</p>
-                <div style={{ width: '100%', borderRadius: 24, overflow: 'hidden', border: '1px solid var(--surface-border)', boxShadow: '0 30px 60px rgba(0,0,0,0.6)' }}>
-                  <img src={item.image} alt={item.title} style={{ width: '100%', display: 'block' }} />
-                </div>
+    <section ref={ref} className="hscroll-outer">
+      <div className="hscroll-sticky">
+        <motion.div className="hscroll-track" style={{ x }}>
+          {items.map((item, i) => (
+            <div key={i} className="hscroll-card">
+              <div className="hscroll-card-head">
+                <div className="badge mb-4">{item.label}</div>
+                <h3 className="h3">{item.title}</h3>
+                <p className="body-sm mt-2">{item.desc}</p>
+              </div>
+              <div className="hscroll-card-media">
+                <img src={item.img} alt={item.title} />
               </div>
             </div>
           ))}
@@ -90,146 +40,206 @@ const HorizontalScrollSection = () => {
 }
 
 export default function Landing() {
-  const heroRef = useRef(null)
-  const { scrollYProgress: heroScroll } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  })
-  
-  const heroScale = useTransform(heroScroll, [0, 1], [1, 0.85])
-  const heroOpacity = useTransform(heroScroll, [0, 1], [1, 0])
+  const heroRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
+  const mockupScale = useTransform(heroProgress, [0, 1], [1, .9])
+  const mockupOpacity = useTransform(heroProgress, [0, .8, 1], [1, 1, 0])
 
   return (
     <>
-      <div className="mesh-bg">
-        <div className="mesh-glow mesh-glow-1" />
-        <div className="mesh-glow mesh-glow-2" />
-      </div>
+      {/* ═══ HERO ═══ */}
+      <section ref={heroRef} className="hero" style={{ minHeight: '115vh' }}>
+        <div className="hero-glow hero-glow-1" />
+        <div className="hero-glow hero-glow-2" />
 
-      {/* HERO SECTION */}
-      <section ref={heroRef} className="hero" style={{ minHeight: '130vh' }}>
-        <div className="hero-content">
+        <div className="hero-inner">
           <ScrollReveal>
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
-              <Logo size={56} />
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <Logo size={72} />
             </div>
           </ScrollReveal>
-          
+
           <ScrollReveal delay={1}>
-            <h1 className="heading-xl">
-              GitHub, now with<br /><span className="text-gradient">Multiplayer.</span>
+            <h1 className="h1 mt-6">
+              Chat where the<br /><span className="gradient-text">code lives.</span>
             </h1>
           </ScrollReveal>
-          
+
           <ScrollReveal delay={2}>
-            <p className="hero-subtitle">
-              The missing real-time collaboration layer for GitHub. Direct messages, group chats, code context sharing, and smart triage — right where you code.
+            <p className="body-lg">
+              Real-time messaging, code context sharing, and smart issue triage — built directly into GitHub.
             </p>
           </ScrollReveal>
-          
+
           <ScrollReveal delay={3}>
             <div className="hero-actions">
               <a href="#install" className="btn btn-primary btn-lg">
-                <Globe size={20} /> Add to Chrome — It's Free
+                Add to Chrome — Free
               </a>
-              <a href="https://github.com/10lint/RepoChat" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg">
-                <GitFork size={20} /> Star on GitHub
+              <a href="https://github.com/10lint/RepoChat" target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-lg">
+                Star on GitHub <ArrowRight size={14} />
               </a>
             </div>
           </ScrollReveal>
         </div>
 
-        {/* MASSIVE HERO MOCKUP (Animated) */}
-        <motion.div 
-          className="container" 
-          style={{ width: '100%', scale: heroScale, opacity: heroOpacity, marginTop: 80 }}
-        >
-          <div className="hero-mockup-wrapper" style={{ padding: 0, background: '#000' }}>
-            <img src="/RC_main_UI.png" alt="RepoChat Main UI" style={{ width: '100%', display: 'block' }} />
-          </div>
+        {/* Hero mockup — contained at max 900px */}
+        <motion.div className="hero-mockup" style={{ scale: mockupScale, opacity: mockupOpacity, maxWidth: 900, margin: '64px auto 0', width: 'calc(100% - 48px)' }}>
+          <img src="/RC_main_UI.png" alt="RepoChat — Main UI" />
         </motion.div>
       </section>
 
-      {/* STACKING CARDS SECTION */}
-      <section className="section" style={{ position: 'relative', zIndex: 10, background: 'var(--bg)', paddingBottom: '20vh' }}>
-        <div className="container" style={{ position: 'relative' }}>
-          
-          <div className="section-header" style={{ marginBottom: '10vh' }}>
-            <div className="badge mb-6"><Zap size={14} /> Core Features</div>
-            <h2 className="heading-lg">Everything you need,<br />right where you code.</h2>
-          </div>
-
-          <StackingCard 
-            index={1} 
-            title="Dev DNA & Context" 
-            description="Share personalized development context and environments seamlessly with your team. No more 'works on my machine'."
-            image="/RC_Dev_DNA.png"
-            icon={<GitFork size={24} />}
-          />
-          
-          <StackingCard 
-            index={2} 
-            title="Smart Triage Action Sheet" 
-            description="Manage issues directly from chat. Apply labels, assign users, and close issues inline without ever losing your train of thought."
-            image="/RC_triage.png"
-            icon={<CheckSquare size={24} />}
-            reverse={true}
-          />
-          
-          <StackingCard 
-            index={3} 
-            title="Built-in Pad" 
-            description="Jot down notes, snippets, and to-do lists directly in your sidebar. Your personal scratchpad synced to the cloud."
-            image="/RC_pad.png"
-            icon={<Code size={24} />}
-          />
-          
-        </div>
-      </section>
-
-      {/* HORIZONTAL SCROLL SECTION */}
-      <HorizontalScrollSection />
-
-      {/* PRICING PREVIEW */}
+      {/* ═══ FEATURE ROWS ═══ */}
       <section className="section">
         <div className="container">
           <ScrollReveal>
-            <div className="section-header">
-              <div className="badge mb-6"><Zap size={14} /> Pricing</div>
-              <h2 className="heading-lg">Transparent Pricing.</h2>
-              <p>Start free, upgrade for unlimited power.</p>
+            <div className="section-head">
+              <div className="badge mb-6"><Zap size={12} /> Core Features</div>
+              <h2 className="h2">Everything you need,<br />built into GitHub.</h2>
+              <p>No more context switching. Chat, triage, and take notes without leaving your repo.</p>
             </div>
           </ScrollReveal>
+
+          {/* ═══ STACKING CARDS ═══ */}
+          <div className="stack-cards">
+            {/* 1: Dev DNA */}
+            <div className="stack-card">
+              <div className="feature-text">
+                <div className="badge">Developer Profile</div>
+                <h3 className="h3 mt-4">Dev DNA & Power Stats</h3>
+                <p className="body-md">View any developer's tech stack, commit pulse, power stats radar chart, and earned badges — all in one beautiful profile card.</p>
+              </div>
+              <div className="feature-media">
+                <img src="/RC_Dev_DNA.png" alt="Dev DNA Profile" />
+              </div>
+            </div>
+
+            {/* 2: Triage */}
+            <div className="stack-card reverse">
+              <div className="feature-text">
+                <div className="badge">Smart Triage</div>
+                <h3 className="h3 mt-4">Triage issues from chat</h3>
+                <p className="body-md">Apply labels, close issues, and claim assignments directly from the chat action sheet. Zero context loss.</p>
+              </div>
+              <div className="feature-media">
+                <img src="/RC_triage.png" alt="Smart Triage" />
+              </div>
+            </div>
+
+            {/* 3: Pad */}
+            <div className="stack-card">
+              <div className="feature-text">
+                <div className="badge">Built-in Notepad</div>
+                <h3 className="h3 mt-4">Pad — Notes & Tasks</h3>
+                <p className="body-md">Quick notes, code snippets, and task tracking with completion progress. Pro users get cloud sync.</p>
+              </div>
+              <div className="feature-media">
+                <img src="/RC_pad.png" alt="Pad" />
+              </div>
+            </div>
+
+            {/* 4: View GitHub */}
+            <div className="stack-card reverse">
+              <div className="feature-text">
+                <div className="badge">Deep Integration</div>
+                <h3 className="h3 mt-4">Everything connected</h3>
+                <p className="body-md">Jump directly from a chat context to the corresponding GitHub page with a single click. Seamless workflow.</p>
+              </div>
+              <div className="feature-media">
+                <img src="/RC_github.png" alt="View on GitHub" />
+              </div>
+            </div>
+
+            {/* 5: Group Chat */}
+            <div className="stack-card">
+              <div className="feature-text">
+                <div className="badge">Collaboration</div>
+                <h3 className="h3 mt-4">Powerful Group Chats</h3>
+                <p className="body-md">Create project-specific groups, manage members, and keep your entire team aligned without leaving your repository.</p>
+              </div>
+              <div className="feature-media">
+                <img src="/RC_group.png" alt="Group Chat" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ HORIZONTAL SCROLL ═══ */}
+      <HorizontalShowcase />
+
+      {/* ═══ MINI FEATURE GRID ═══ */}
+      <section className="section">
+        <div className="container">
+          <ScrollReveal>
+            <div className="section-head">
+              <h2 className="h2">And so much more.</h2>
+            </div>
+          </ScrollReveal>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
+            {[
+              { icon: <MessageSquare size={18} />, title: 'DM & Group Chat', desc: 'Real-time messaging with friends and groups.' },
+              { icon: <GitPullRequest size={18} />, title: 'GitHub Context', desc: 'Attach PRs, Issues, and branches to any message.' },
+              { icon: <Tag size={18} />, title: 'Reactions & Stars', desc: 'React to messages, star them for quick access.' },
+              { icon: <ClipboardList size={18} />, title: 'Custom Lists', desc: 'Organize chats by project, team, or context.' },
+              { icon: <Share2 size={18} />, title: 'Online Presence', desc: 'See who is online with last-seen timestamps.' },
+              { icon: <Zap size={18} />, title: 'Theming', desc: '20+ accent colors, dark/light mode, compact layout.' },
+            ].map((f, i) => (
+              <ScrollReveal key={i} delay={(i % 3) as 0 | 1 | 2 | 3}>
+                <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: 24, transition: 'border-color .3s', cursor: 'default', height: '100%' }}
+                  onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--border-hover)')}
+                  onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--border)')}>
+                  <div className="card-icon">{f.icon}</div>
+                  <h4 className="h4">{f.title}</h4>
+                  <p className="body-sm mt-2">{f.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ PRICING ═══ */}
+      <section className="section" style={{ borderTop: '1px solid var(--border)' }}>
+        <div className="container">
+          <ScrollReveal>
+            <div className="section-head">
+              <div className="badge mb-6"><Zap size={12} /> Pricing</div>
+              <h2 className="h2">Simple pricing.</h2>
+              <p>Start free, upgrade when you need more.</p>
+            </div>
+          </ScrollReveal>
+
           <div className="pricing-grid">
             <ScrollReveal delay={1}>
-              <div className="pricing-card">
-                <h3 className="heading-md">Free</h3>
-                <p className="text-secondary mt-2">Everything you need to get started.</p>
-                <div className="mt-8 mb-8">
-                  <span className="price">$0</span><span className="price-period">/mo</span>
-                </div>
-                <ul className="pricing-features">
-                  <li><span className="check">✓</span> 15 Friends & 5 Groups</li>
-                  <li><span className="check">✓</span> GitHub Context Sharing</li>
-                  <li><span className="check">✓</span> Smart Triage Actions</li>
-                  <li><span className="x-mark">✗</span> <span className="disabled">Cloud Data Sync</span></li>
+              <div className="price-card">
+                <p style={{ fontWeight: 600, fontSize: '1.05rem' }}>Free</p>
+                <p className="body-sm">Everything to get started.</p>
+                <div className="mt-6 mb-8"><span className="price">$0</span> <span className="period">/mo</span></div>
+                <ul className="price-features">
+                  <li><span className="ck">✓</span> 15 Friends & 5 Groups</li>
+                  <li><span className="ck">✓</span> GitHub Context Sharing</li>
+                  <li><span className="ck">✓</span> Smart Triage Actions</li>
+                  <li><span className="ck">✓</span> 10 Pad entries</li>
+                  <li><span className="no">✗</span> <span className="dis">Unlimited limits</span></li>
+                  <li><span className="no">✗</span> <span className="dis">Cloud Data Sync</span></li>
                 </ul>
-                <a href="#install" className="btn btn-secondary btn-lg mt-8" style={{ width: '100%' }}>Get Started Free</a>
+                <a href="#install" className="btn btn-ghost btn-lg mt-8" style={{ width: '100%' }}>Get Started</a>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={2}>
-              <div className="pricing-card featured">
-                <h3 className="heading-md" style={{ color: 'var(--primary-light)' }}>Pro</h3>
-                <p className="text-secondary mt-2">Unlimited limits & cloud sync.</p>
-                <div className="mt-8 mb-8">
-                  <span className="price text-gradient">$4.99</span><span className="price-period">/mo</span>
-                </div>
-                <ul className="pricing-features">
-                  <li><span className="check" style={{ color: 'var(--primary-light)' }}>✓</span> <strong>Unlimited</strong> Friends & Groups</li>
-                  <li><span className="check" style={{ color: 'var(--primary-light)' }}>✓</span> <strong>Unlimited</strong> Pad & Lists</li>
-                  <li><span className="check" style={{ color: 'var(--primary-light)' }}>✓</span> Continuous Cloud Data Sync</li>
-                  <li><span className="check" style={{ color: 'var(--primary-light)' }}>✓</span> Priority Support</li>
+              <div className="price-card featured">
+                <p style={{ fontWeight: 600, fontSize: '1.05rem', color: 'var(--accent)' }}>Pro</p>
+                <p className="body-sm">Unlimited power.</p>
+                <div className="mt-6 mb-8"><span className="price gradient-text">$4.99</span> <span className="period">/mo</span></div>
+                <ul className="price-features">
+                  <li><span className="ck">✓</span> <strong>Unlimited</strong> Friends & Groups</li>
+                  <li><span className="ck">✓</span> <strong>Unlimited</strong> Pad & Lists</li>
+                  <li><span className="ck">✓</span> Continuous Cloud Sync</li>
+                  <li><span className="ck">✓</span> Priority Feature Access</li>
+                  <li><span className="ck">✓</span> Premium Support</li>
                 </ul>
                 <a href="#install" className="btn btn-accent btn-lg mt-8" style={{ width: '100%' }}>Upgrade to Pro</a>
               </div>
@@ -238,47 +248,40 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* FAQ & SECURITY TRUST */}
-      <section className="section" style={{ background: 'var(--bg-alt)' }}>
+      {/* ═══ TRUST + FAQ ═══ */}
+      <section className="section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start' }}>
-            
+          <div className="grid-2" style={{ gap: 64 }}>
             <ScrollReveal>
-              <div className="badge mb-6"><Shield size={14} /> Security First</div>
-              <h2 className="heading-md mb-6">Your data, highly secured.</h2>
-              <p className="text-lg mb-8">
-                RepoChat is built on a foundation of trust. Every message, note, and setting is protected by PostgreSQL Row Level Security (RLS). 
-              </p>
-              <ul className="pricing-features" style={{ marginTop: 0 }}>
-                <li><span className="check">✓</span> GitHub OAuth Authentication (No passwords)</li>
-                <li><span className="check">✓</span> Complete Data Isolation per user</li>
-                <li><span className="check">✓</span> Encrypted in transit and at rest</li>
+              <div className="badge mb-6"><Shield size={12} /> Security</div>
+              <h2 className="h3 mb-4">Built on trust.</h2>
+              <p className="body-md mb-8">Every table protected with PostgreSQL Row Level Security. Your data is completely isolated.</p>
+              <ul className="price-features" style={{ marginTop: 0 }}>
+                <li><span className="ck">✓</span> GitHub OAuth — no passwords stored</li>
+                <li><span className="ck">✓</span> Complete per-user data isolation</li>
+                <li><span className="ck">✓</span> Encrypted in transit & at rest</li>
               </ul>
-              <div className="mt-8">
-                <a href="/security" className="btn btn-secondary">Read our Security Promise <ArrowRight size={16}/></a>
-              </div>
+              <a href="/security" className="btn btn-ghost mt-8">Security Details <ArrowRight size={14} /></a>
             </ScrollReveal>
 
             <ScrollReveal delay={1}>
-              <h2 className="heading-md mb-8">FAQs</h2>
+              <h2 className="h3 mb-6">FAQs</h2>
               <FAQ />
             </ScrollReveal>
-            
           </div>
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="section" style={{ position: 'relative', overflow: 'hidden', borderTop: '1px solid var(--surface-border)' }}>
-        <div className="mesh-glow mesh-glow-1" style={{ top: '50%', transform: 'translate(-50%, -50%)', opacity: 0.1 }} />
+      {/* ═══ CTA ═══ */}
+      <section className="section" style={{ borderTop: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
+        <div className="hero-glow hero-glow-1" style={{ top: '50%', opacity: .06 }} />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <ScrollReveal>
-            <div className="text-center" style={{ maxWidth: 800, margin: '0 auto' }}>
-              <h2 className="heading-xl mb-6">Start collaborating.</h2>
-              <p className="text-lg mb-10">Join the developers bringing multiplayer to their GitHub workflow.</p>
-              <a href="#install" className="btn btn-primary btn-lg" style={{ transform: 'scale(1.1)' }}>
-                <Globe size={20} /> Add to Chrome — Free
-              </a>
+            <div className="text-center" style={{ maxWidth: 640, margin: '0 auto' }}>
+              <Logo size={48} />
+              <h2 className="h1 mt-6 mb-6">Chat where the<br /><span className="gradient-text">code lives.</span></h2>
+              <p className="body-lg mb-8">Join developers who ship faster by collaborating right where they code.</p>
+              <a href="#install" className="btn btn-primary btn-lg">Add to Chrome — Free</a>
             </div>
           </ScrollReveal>
         </div>
