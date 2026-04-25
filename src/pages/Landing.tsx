@@ -225,7 +225,7 @@ export default function Landing() {
               },
               { 
                 title: 'Custom Lists', 
-                desc: 'Organize chats by project, team, or context.', 
+                desc: 'Organize chats by project, team, or context smartly.', 
                 bg: '/b318345d-f5f6-4972-81be-c61b1cd538b1.jpg',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
