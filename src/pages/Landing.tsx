@@ -57,7 +57,7 @@ export default function Landing() {
           <ScrollReveal>
             <div className="section-head">
               <div className="badge mb-6"><Zap size={12} /> Core Features</div>
-              <h2 className="h2">Everything you need,<br />built into GitHub.</h2>
+              <h2 className="h2">Everything you need,<br />built into RepoChat.</h2>
               <p>No more context switching. Chat, triage, and take notes without leaving your repo.</p>
             </div>
           </ScrollReveal>
