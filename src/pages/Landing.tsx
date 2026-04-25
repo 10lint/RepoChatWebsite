@@ -184,7 +184,7 @@ export default function Landing() {
               { title: 'Pin Users', desc: 'Pin up to 3 users for instant access in the share popup.', bg: '/f6fe7ed3-21ce-4297-9abb-9f41d6779c69.jpg' },
               { title: 'Message Templates', desc: 'Save time with up to 6 custom message templates.', bg: '/a9cdf66f-befe-413a-bf99-83c54794d266.jpg' },
               { title: 'Notes & Tasks', desc: 'Add notes in Pad, mark as complete, and share easily.', bg: '/eve-dFIYU7xOl0w-unsplash.jpg' },
-              { title: 'Smart Archive', desc: 'Archive and pin chats to keep your workspace tidy.', bg: '/josiah-rock-SeB089y6bXQ-unsplash.jpg' },
+              { title: 'Smart Archive', desc: 'Archive and pin chats to keep your workspace tidy.', bg: '/513b98f7-9dc5-4844-86ca-379ae723b77f.jpg' },
               { title: 'Quick Share', desc: 'Share panel via dedicated module or keyboard shortcut.', bg: '/cocoloris-co-mTdkTShJMfU-unsplash.jpg' },
             ].map((f, i) => (
               <ScrollReveal key={i} delay={(i % 3) as 0 | 1 | 2 | 3}>
