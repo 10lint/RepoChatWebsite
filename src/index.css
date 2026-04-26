@@ -454,6 +454,7 @@ textarea.form-input{min-height:110px;resize:vertical}
   position: relative;
   background-size: cover;
   background-position: center;
+  background-color: #0d1117;
   border-radius: var(--radius);
   padding: 32px 24px;
   cursor: grab;
