@@ -73,7 +73,7 @@ export default function Landing() {
                   <p className="body-md">View any developer's tech stack, commit pulse, power stats radar chart, and earned badges — all in one beautiful profile card.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_Dev_DNA.png" alt="Dev DNA Profile" />
+                  <img src="/RC_Dev_DNA.png" alt="Dev DNA & Power Stats" loading="lazy" />
                 </div>
               </div>
             </ScrollReveal>
@@ -83,11 +83,11 @@ export default function Landing() {
               <div className="stack-card reverse">
                 <div className="feature-text">
                   <div className="badge">Smart Triage</div>
-                  <h3 className="h3 mt-4">Triage issues from chat</h3>
-                  <p className="body-md">Apply labels, close issues, and claim assignments directly from the chat action sheet. Zero context loss.</p>
+                  <h3 className="h3 mt-4">Smart GitHub Triage</h3>
+                  <p className="body-md">Manage issues without leaving your chat. Add labels, assign developers, and close issues with a single click in the sidebar.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_triage.png" alt="Smart Triage" />
+                  <img src="/RC_triage.png" alt="Smart Triage" loading="lazy" />
                 </div>
               </div>
             </ScrollReveal>
@@ -96,12 +96,12 @@ export default function Landing() {
             <ScrollReveal>
               <div className="stack-card">
                 <div className="feature-text">
-                  <div className="badge">Built-in Notepad</div>
-                  <h3 className="h3 mt-4">Pad — Notes & Tasks</h3>
-                  <p className="body-md">Quick notes, code snippets, and task tracking with completion progress. Pro users get cloud sync.</p>
+                  <div className="badge">Pull Requests</div>
+                  <h3 className="h3 mt-4">Attach PR Context</h3>
+                  <p className="body-md">Instantly share PR details. Just click the Plus icon to attach the current PR or search for any PR/Issue in the repo.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_pad.png" alt="Pad" />
+                  <img src="/RC_main_UI.png" alt="Pull Request Context" loading="lazy" />
                 </div>
               </div>
             </ScrollReveal>
@@ -110,12 +110,12 @@ export default function Landing() {
             <ScrollReveal>
               <div className="stack-card reverse">
                 <div className="feature-text">
-                  <div className="badge">Deep Integration</div>
-                  <h3 className="h3 mt-4">Everything connected</h3>
-                  <p className="body-md">Jump directly from a chat context to the corresponding GitHub page with a single click. Seamless workflow.</p>
+                  <div className="badge">Real-time Sync</div>
+                  <h3 className="h3 mt-4">Multi-device data sync</h3>
+                  <p className="body-md">Your chats, notes, and preferences sync instantly across all your devices. Pro users get unlimited cloud persistence.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_github.png" alt="View on GitHub" />
+                  <img src="/RC_share_popup.png" alt="Real-time Sync" loading="lazy" />
                 </div>
               </div>
             </ScrollReveal>
@@ -124,12 +124,12 @@ export default function Landing() {
             <ScrollReveal>
               <div className="stack-card">
                 <div className="feature-text">
-                  <div className="badge">Collaboration</div>
-                  <h3 className="h3 mt-4">Powerful Group Chats</h3>
-                  <p className="body-md">Create project-specific groups, manage members, and keep your entire team aligned without leaving your repository.</p>
+                  <div className="badge">Built-in Notepad</div>
+                  <h3 className="h3 mt-4">Pad — Notes & Tasks</h3>
+                  <p className="body-md">Quick notes, code snippets, and task tracking with completion progress. Pro users get cloud sync.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_group.png" alt="Group Chat" />
+                  <img src="/RC_pad.png" alt="Notes & Tasks" loading="lazy" />
                 </div>
               </div>
             </ScrollReveal>
@@ -138,12 +138,12 @@ export default function Landing() {
             <ScrollReveal>
               <div className="stack-card reverse">
                 <div className="feature-text">
-                  <div className="badge">Context Sharing</div>
-                  <h3 className="h3 mt-4">Share PRs & Issues instantly</h3>
-                  <p className="body-md">Select any PR or Issue on GitHub, choose a friend or group, and share — with full context attached.</p>
+                  <div className="badge">Team Collaboration</div>
+                  <h3 className="h3 mt-4">Group Chats & Teams</h3>
+                  <p className="body-md">Create project-specific group chats. Add team members and collaborate in real-time right next to your codebase.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_share_popup.png" alt="Context Sharing" />
+                  <img src="/RC_group.png" alt="Group Chats" loading="lazy" />
                 </div>
               </div>
             </ScrollReveal>
@@ -157,7 +157,7 @@ export default function Landing() {
                   <p className="body-md">Write comments and post them directly to GitHub Issues. No tab switching needed.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_comment.png" alt="Comment on GitHub" />
+                  <img src="/RC_comment.png" alt="Comment on GitHub" loading="lazy" />
                 </div>
               </div>
             </ScrollReveal>
@@ -171,7 +171,7 @@ export default function Landing() {
                   <p className="body-md">Recipients see a formatted context card with PR title, description, and your message — attributed with "Shared via RepoChat".</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_shared_via_RC.png" alt="Shared via RepoChat" />
+                  <img src="/RC_shared_via_RC.png" alt="Shared via RepoChat" loading="lazy" />
                 </div>
               </div>
             </ScrollReveal>
@@ -193,7 +193,7 @@ export default function Landing() {
               { 
                 title: 'DM & Group Chat', 
                 desc: 'Real-time messaging with friends and groups.', 
-                bg: '/c2ef792a-71cf-420e-9dc6-39673be2a4ff.jpg',
+                bg: 'linear-gradient(135deg, #4338ca 0%, #6d28d9 50%, #db2777 100%)',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M25 15 Q40 12 55 15 Q65 18 65 30 Q65 42 50 45 L40 55 L42 45 Q20 42 20 30 Q20 18 25 15" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
@@ -209,7 +209,7 @@ export default function Landing() {
               { 
                 title: 'GitHub Context', 
                 desc: 'Attach PRs, Issues, and branches to any message.', 
-                bg: '/5b55f314-eba4-42a9-adae-c25514fe5d5f.jpg',
+                bg: 'linear-gradient(135deg, #0f766e 0%, #0369a1 100%)',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M20 10 Q22 30 20 50" fill="none" stroke="#06B6D4" strokeWidth="2.5" opacity="0.9" />
@@ -227,7 +227,7 @@ export default function Landing() {
               { 
                 title: 'Reactions & Stars', 
                 desc: 'React to messages, star them for quick access.', 
-                bg: '/5d255d44-b559-4630-b0a7-e763dda69fb2.jpg',
+                bg: 'linear-gradient(135deg, #be185d 0%, #7e22ce 100%)',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M50 10 Q52 25 65 25 Q52 25 50 40 Q48 25 35 25 Q48 25 50 10" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.9" />
@@ -242,7 +242,7 @@ export default function Landing() {
               { 
                 title: 'Custom Lists', 
                 desc: 'Organize chats by project, team, or context smartly.', 
-                bg: '/b318345d-f5f6-4972-81be-c61b1cd538b1.jpg',
+                bg: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M30 15 Q50 12 70 15 L72 45 Q50 48 28 45 Z" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.8" />
@@ -256,7 +256,7 @@ export default function Landing() {
               { 
                 title: 'Online Presence', 
                 desc: 'See who is online with last-seen timestamps.', 
-                bg: '/josiah-rock-7EnvCCL8XGE-unsplash.jpg',
+                bg: 'linear-gradient(135deg, #111827 0%, #3b82f6 100%)',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M50 30 Q55 20 65 20 M50 30 Q45 20 35 20" fill="none" stroke="#06B6D4" strokeWidth="2" opacity="0.8" />
@@ -270,7 +270,7 @@ export default function Landing() {
               { 
                 title: 'Theming', 
                 desc: '6 accent colors, default and compact view support.', 
-                bg: '/cfe5d5ef-9b51-4931-a76f-9a817afff2dd.jpg',
+                bg: 'linear-gradient(135deg, #4c1d95 0%, #9333ea 100%)',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M30 20 Q40 10 50 20 Q60 30 70 20 Q80 10 85 25 Q85 45 70 50 Q50 55 30 50 Q15 45 15 25 Q15 10 30 20" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.8" />
@@ -285,7 +285,7 @@ export default function Landing() {
               { 
                 title: 'Keyboard Shortcuts', 
                 desc: 'Navigate fast with professional keyboard workflows.', 
-                bg: '/ee477f25-3b2a-45a2-8614-f79f0a8c3200.jpg',
+                bg: 'linear-gradient(135deg, #065f46 0%, #059669 100%)',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M25 20 Q35 18 45 20 L45 40 Q35 42 25 40 Z" fill="none" stroke="#06B6D4" strokeWidth="2" opacity="0.9" />
@@ -300,7 +300,7 @@ export default function Landing() {
               { 
                 title: 'Pin Users', 
                 desc: 'Pin up to 3 users for instant access in the share popup.', 
-                bg: '/f6fe7ed3-21ce-4297-9abb-9f41d6779c69.jpg',
+                bg: 'linear-gradient(135deg, #312e81 0%, #1e1b4b 100%)',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M50 15 L50 45 M35 45 L65 45" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round" opacity="0.9" />
@@ -314,21 +314,20 @@ export default function Landing() {
               { 
                 title: 'Message Templates', 
                 desc: 'Save time with up to 6 custom message templates.', 
-                bg: '/a9cdf66f-befe-413a-bf99-83c54794d266.jpg',
+                bg: 'linear-gradient(135deg, #0369a1 0%, #0c4a6e 100%)',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M30 10 Q50 8 70 10 L72 50 Q50 52 28 50 Z" fill="none" stroke="white" strokeWidth="1.5" opacity="0.8" />
-                    <path d="M35 20 H65" stroke="#8B5CF6" strokeWidth="2.5" opacity="0.9" />
-                    <path d="M35 30 H60" stroke="white" strokeWidth="1.5" opacity="0.5" />
-                    <path d="M35 40 H55" stroke="#06B6D4" strokeWidth="2.5" opacity="0.7" />
-                    <path d="M25 15 L20 10 M75 45 L80 50" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                    <path d="M32 15 L68 15" stroke="white" strokeWidth="0.5" opacity="0.2" />
+                    <path d="M35 25 H65 M35 32 H65 M35 39 H65 M35 46 H50" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
+                    <path d="M80 20 L85 25 M85 20 L80 25" stroke="white" strokeWidth="0.5" opacity="0.4" />
                   </svg>
                 )
               },
               { 
                 title: 'Notes & Tasks', 
                 desc: 'Add notes in Pad, mark as complete, and share easily.', 
-                bg: '/eve-dFIYU7xOl0w-unsplash.jpg',
+                bg: 'linear-gradient(135deg, #4338ca 0%, #1e1b4b 100%)',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M30 35 Q40 45 50 50 Q70 20 85 10" fill="none" stroke="#06B6D4" strokeWidth="4" strokeLinecap="round" opacity="0.9" />
@@ -341,7 +340,7 @@ export default function Landing() {
               { 
                 title: 'Smart Archive', 
                 desc: 'Archive and pin chats to keep your workspace tidy.', 
-                bg: '/513b98f7-9dc5-4844-86ca-379ae723b77f.jpg',
+                bg: 'linear-gradient(135deg, #111827 0%, #1f2937 100%)',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M25 20 L50 10 L75 20 L75 45 L50 55 L25 45 Z" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.9" />
@@ -354,7 +353,7 @@ export default function Landing() {
               { 
                 title: 'Quick Share', 
                 desc: 'Share panel via dedicated module or keyboard shortcut.', 
-                bg: '/cocoloris-co-mTdkTShJMfU-unsplash.jpg',
+                bg: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
                 visual: (
                   <svg viewBox="0 0 100 60" className="visual-svg">
                     <path d="M20 30 Q50 10 85 30 L45 40 L20 30" fill="none" stroke="#06B6D4" strokeWidth="2" opacity="0.9" />
@@ -364,13 +363,13 @@ export default function Landing() {
                     <path d="M10 10 L20 20 M90 50 L80 40" stroke="white" strokeWidth="0.5" opacity="0.2" />
                   </svg>
                 )
-              },
+              }
             ].map((f, i) => (
               <ScrollReveal key={i} delay={(i % 3) as 0 | 1 | 2 | 3}>
-                <div className="mini-feature-card" style={{ backgroundImage: `url(${f.bg})` }}>
-                  <div>
+                <div className="mini-feature-card" style={{ background: f.bg }}>
+                  <div className="mini-feature-content">
                     <h4 className="h4">{f.title}</h4>
-                    <p className="body-sm mt-2">{f.desc}</p>
+                    <p className="body-sm mt-2" style={{ opacity: 0.7 }}>{f.desc}</p>
                   </div>
                   <div className="mini-feature-visual">
                     {f.visual}
