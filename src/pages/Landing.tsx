@@ -493,15 +493,17 @@ export default function Landing() {
         <div className="container">
           <div className="grid-2" style={{ gap: 64 }}>
             <ScrollReveal>
-              <div className="badge mb-6"><Shield size={12} /> Security</div>
-              <h2 className="h3 mb-4">Built on trust.</h2>
-              <p className="body-md mb-8">Every table protected with PostgreSQL Row Level Security. Your data is completely isolated.</p>
-              <ul className="price-features" style={{ marginTop: 0 }}>
-                <li><span className="ck">✓</span> GitHub OAuth — no passwords stored</li>
-                <li><span className="ck">✓</span> Complete per-user data isolation</li>
-                <li><span className="ck">✓</span> Encrypted in transit & at rest</li>
-              </ul>
-              <a href="/security" className="btn btn-ghost mt-8">Security Details <ArrowRight size={14} /></a>
+              <div className="trust-content">
+                <div className="badge mb-6"><Shield size={12} /> Security</div>
+                <h2 className="h3 mb-4">Built on trust.</h2>
+                <p className="body-md mb-8">Every table protected with PostgreSQL Row Level Security. Your data is completely isolated.</p>
+                <ul className="price-features" style={{ marginTop: 0 }}>
+                  <li><span className="ck">✓</span> GitHub OAuth — no passwords stored</li>
+                  <li><span className="ck">✓</span> Complete per-user data isolation</li>
+                  <li><span className="ck">✓</span> Encrypted in transit & at rest</li>
+                </ul>
+                <a href="/security" className="btn btn-ghost mt-8">Security Details <ArrowRight size={14} /></a>
+              </div>
             </ScrollReveal>
 
             <ScrollReveal delay={1}>
@@ -515,7 +517,7 @@ export default function Landing() {
       <section className="section" style={{ padding: '40px 0 80px', position: 'relative', overflow: 'hidden', textAlign: 'center' }}>
         <div className="container">
           <ScrollReveal>
-            <h2 className="h1" style={{ fontSize: 'clamp(5rem, 15vw, 12rem)', fontWeight: 200, letterSpacing: '-0.03em', marginBottom: 0, lineHeight: 1, color: 'rgba(255,255,255,0.9)' }}>RepoChat.</h2>
+            <h2 className="h1" style={{ fontSize: 'clamp(3rem, 18vw, 12rem)', fontWeight: 200, letterSpacing: '-0.03em', marginBottom: 0, lineHeight: 1, color: 'rgba(255,255,255,0.9)' }}>RepoChat.</h2>
           </ScrollReveal>
         </div>
       </section>

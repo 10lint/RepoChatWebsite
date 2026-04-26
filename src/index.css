@@ -117,6 +117,16 @@ ul{list-style:none}
   .btn { padding: 10px 20px; font-size: 0.8rem; }
   .hero { padding-bottom: 0; }
   .section { padding-top: var(--space-m); }
+  
+  .trust-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .trust-content .price-features {
+    align-items: center;
+  }
 }
 
 /* ============================================
@@ -300,13 +310,20 @@ ul{list-style:none}
    ============================================ */
 .footer{border-top:1px solid var(--border);padding:var(--space-l) 0 var(--space-s);background:var(--bg)}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
-@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:24px}}
 .footer-brand p{color:var(--text-muted);font-size:.82rem;margin-top:10px;max-width:240px;line-height:1.6}
 .footer-col h4{font-size:.75rem;font-weight:600;color:var(--text-primary);margin-bottom:14px;text-transform:uppercase;letter-spacing:.06em}
 .footer-col a{display:block;font-size:.82rem;color:var(--text-secondary);padding:4px 0;transition:color .2s}
 .footer-col a:hover{color:var(--text-primary)}
 .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;align-items:center;justify-content:space-between;font-size:.78rem;color:var(--text-muted)}
-@media(max-width:768px){.footer-bottom{flex-direction:column;gap:12px;text-align:center}}
+
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr;gap:36px;text-align:center}
+  .footer-brand{display:flex;flex-direction:column;align-items:center}
+  .footer-brand p{margin:10px auto 0;max-width:100%}
+  .footer-col{display:flex;flex-direction:column;align-items:center}
+  .footer-col h4{text-align:center}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+}
 
 /* ============================================
    LEGAL PAGES
