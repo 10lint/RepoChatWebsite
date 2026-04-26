@@ -47,7 +47,7 @@ export default function Landing() {
 
         {/* Hero mockup — fluid scaling */}
         <motion.div className="hero-mockup" style={{ scale: mockupScale, opacity: mockupOpacity, width: 'calc(100% - 48px)' }}>
-          <img src="/RC_main_UI.png" alt="RepoChat — Main UI" />
+          <img src="/RC_main_UI.png" alt="RepoChat — Main UI" fetchPriority="high" decoding="async" />
         </motion.div>
       </section>
 
@@ -73,7 +73,7 @@ export default function Landing() {
                   <p className="body-md">View any developer's tech stack, commit pulse, power stats radar chart, and earned badges — all in one beautiful profile card.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_Dev_DNA.png" alt="Dev DNA & Power Stats" loading="lazy" />
+                  <img src="/RC_Dev_DNA.png" alt="Dev DNA & Power Stats" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
@@ -87,7 +87,7 @@ export default function Landing() {
                   <p className="body-md">Manage issues without leaving your chat. Add labels, assign developers, and close issues with a single click in the sidebar.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_triage.png" alt="Smart Triage" loading="lazy" />
+                  <img src="/RC_triage.png" alt="Smart Triage" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
@@ -101,7 +101,7 @@ export default function Landing() {
                   <p className="body-md">Instantly share PR details. Just click the Plus icon to attach the current PR or search for any PR/Issue in the repo.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_main_UI.png" alt="Pull Request Context" loading="lazy" />
+                  <img src="/RC_main_UI.png" alt="Pull Request Context" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
@@ -115,7 +115,7 @@ export default function Landing() {
                   <p className="body-md">Your chats, notes, and preferences sync instantly across all your devices. Pro users get unlimited cloud persistence.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_share_popup.png" alt="Real-time Sync" loading="lazy" />
+                  <img src="/RC_share_popup.png" alt="Real-time Sync" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
@@ -129,7 +129,7 @@ export default function Landing() {
                   <p className="body-md">Quick notes, code snippets, and task tracking with completion progress. Pro users get cloud sync.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_pad.png" alt="Notes & Tasks" loading="lazy" />
+                  <img src="/RC_pad.png" alt="Notes & Tasks" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
@@ -143,7 +143,7 @@ export default function Landing() {
                   <p className="body-md">Create project-specific group chats. Add team members and collaborate in real-time right next to your codebase.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_group.png" alt="Group Chats" loading="lazy" />
+                  <img src="/RC_group.png" alt="Group Chats" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
@@ -157,7 +157,7 @@ export default function Landing() {
                   <p className="body-md">Write comments and post them directly to GitHub Issues. No tab switching needed.</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_comment.png" alt="Comment on GitHub" loading="lazy" />
+                  <img src="/RC_comment.png" alt="Comment on GitHub" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
@@ -171,7 +171,7 @@ export default function Landing() {
                   <p className="body-md">Recipients see a formatted context card with PR title, description, and your message — attributed with "Shared via RepoChat".</p>
                 </div>
                 <div className="feature-media">
-                  <img src="/RC_shared_via_RC.png" alt="Shared via RepoChat" loading="lazy" />
+                  <img src="/RC_shared_via_RC.png" alt="Shared via RepoChat" loading="lazy" decoding="async" />
                 </div>
               </div>
             </ScrollReveal>
