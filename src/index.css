@@ -590,6 +590,10 @@ textarea.form-input{min-height:110px;resize:vertical}
   background: rgba(255, 255, 255, 0.02);
 }
 
+.pricing-table tr:hover td.pro-col {
+  background: rgba(139, 92, 246, 0.05);
+}
+
 .pricing-table .tier-header {
   padding: 24px 24px;
 }
