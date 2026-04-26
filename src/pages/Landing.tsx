@@ -14,7 +14,7 @@ export default function Landing() {
   return (
     <>
       {/* ═══ HERO ═══ */}
-      <section ref={heroRef} className="hero" style={{ minHeight: '115vh' }}>
+      <section ref={heroRef} className="hero">
         <div className="hero-glow hero-glow-1" />
         <div className="hero-glow hero-glow-2" />
 
