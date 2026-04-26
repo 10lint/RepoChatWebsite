@@ -215,9 +215,6 @@ ul{list-style:none}
   .stack-card.reverse {
     grid-template-columns: 1fr 1fr;
   }
-  .stack-card.reverse .feature-media {
-    order: 0;
-  }
   .feature-media {
     border-radius: 12px;
   }
@@ -239,6 +236,10 @@ ul{list-style:none}
   }
   .stack-card.reverse {
     grid-template-columns: 1fr;
+  }
+  /* Reset order so information (text) is always on top on phones */
+  .stack-card.reverse .feature-media {
+    order: 0;
   }
   .feature-media {
     border-radius: 10px;
