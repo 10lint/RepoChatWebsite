@@ -24,11 +24,11 @@ export default function Navbar() {
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileOpen) {
-      document.body.style.overflow = 'hidden';
+      document.documentElement.classList.add('nav-open-lock');
     } else {
-      document.body.style.overflow = '';
+      document.documentElement.classList.remove('nav-open-lock');
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => { document.documentElement.classList.remove('nav-open-lock'); };
   }, [mobileOpen]);
 
   return (

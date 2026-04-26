@@ -86,13 +86,21 @@ ul{list-style:none}
   }
 }
 
+/* Aggressive Scroll Lock */
+html.nav-open-lock,
+html.nav-open-lock body {
+  overflow: hidden !important;
+  height: 100% !important;
+  overscroll-behavior: none !important;
+}
+
 /* Mobile Glassmorphic Overlay */
 .mobile-menu-overlay {
-  position: absolute;
+  position: fixed;
   top: var(--nav-h);
   left: 0;
   right: 0;
-  height: calc(100vh - var(--nav-h));
+  bottom: 0;
   background: var(--bg);
   backdrop-filter: none;
   border-top: none;
@@ -100,6 +108,7 @@ ul{list-style:none}
   flex-direction: column;
   padding: 32px 24px;
   z-index: 99;
+  overscroll-behavior: none;
 }
 
 .mobile-nav-links {
