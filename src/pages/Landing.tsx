@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
 import { ArrowRight, Shield, Zap } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import ScrollReveal from '../components/ScrollReveal'
@@ -6,30 +6,7 @@ import FAQ from '../components/FAQ'
 
 export default function Landing() {
   const heroRef = useRef<HTMLDivElement>(null)
-  const cardsContainerRef = useRef<HTMLDivElement>(null)
-  const [firstCardHeight, setFirstCardHeight] = useState<number | undefined>(undefined)
-
-  useEffect(() => {
-    const measureHeight = () => {
-      if (!cardsContainerRef.current) return;
-      const cards = cardsContainerRef.current.querySelectorAll('.stack-card');
-      if (cards.length > 0) {
-        const firstCard = cards[0] as HTMLElement;
-        // Temporarily clear explicit height to measure natural content size
-        firstCard.style.height = 'auto';
-        const height = firstCard.getBoundingClientRect().height;
-        setFirstCardHeight(height);
-      }
-    };
-
-    // Small delay to ensure images/fonts are loaded initially
-    setTimeout(measureHeight, 100);
-    window.addEventListener('resize', measureHeight);
-    return () => window.removeEventListener('resize', measureHeight);
-  }, []);
-
-  const cardStyle = { height: firstCardHeight ? `${firstCardHeight}px` : 'auto' };
-
+  
   const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const mockupScale = useTransform(heroProgress, [0, 1], [1, .9])
   const mockupOpacity = useTransform(heroProgress, [0, .8, 1], [1, 1, 0])
@@ -86,102 +63,118 @@ export default function Landing() {
           </ScrollReveal>
 
           {/* ═══ STACKING CARDS ═══ */}
-          <div className="stack-cards" ref={cardsContainerRef}>
+          <div className="stack-cards">
             {/* 1: Dev DNA */}
-            <div className="stack-card" style={cardStyle}>
-              <div className="feature-text">
-                <div className="badge">Developer Profile</div>
-                <h3 className="h3 mt-4">Dev DNA & Power Stats</h3>
-                <p className="body-md">View any developer's tech stack, commit pulse, power stats radar chart, and earned badges — all in one beautiful profile card.</p>
+            <ScrollReveal>
+              <div className="stack-card">
+                <div className="feature-text">
+                  <div className="badge">Developer Profile</div>
+                  <h3 className="h3 mt-4">Dev DNA & Power Stats</h3>
+                  <p className="body-md">View any developer's tech stack, commit pulse, power stats radar chart, and earned badges — all in one beautiful profile card.</p>
+                </div>
+                <div className="feature-media">
+                  <img src="/RC_Dev_DNA.png" alt="Dev DNA Profile" />
+                </div>
               </div>
-              <div className="feature-media">
-                <img src="/RC_Dev_DNA.png" alt="Dev DNA Profile" />
-              </div>
-            </div>
+            </ScrollReveal>
 
             {/* 2: Triage */}
-            <div className="stack-card reverse" style={cardStyle}>
-              <div className="feature-text">
-                <div className="badge">Smart Triage</div>
-                <h3 className="h3 mt-4">Triage issues from chat</h3>
-                <p className="body-md">Apply labels, close issues, and claim assignments directly from the chat action sheet. Zero context loss.</p>
+            <ScrollReveal>
+              <div className="stack-card reverse">
+                <div className="feature-text">
+                  <div className="badge">Smart Triage</div>
+                  <h3 className="h3 mt-4">Triage issues from chat</h3>
+                  <p className="body-md">Apply labels, close issues, and claim assignments directly from the chat action sheet. Zero context loss.</p>
+                </div>
+                <div className="feature-media">
+                  <img src="/RC_triage.png" alt="Smart Triage" />
+                </div>
               </div>
-              <div className="feature-media">
-                <img src="/RC_triage.png" alt="Smart Triage" />
-              </div>
-            </div>
+            </ScrollReveal>
 
             {/* 3: Pad */}
-            <div className="stack-card" style={cardStyle}>
-              <div className="feature-text">
-                <div className="badge">Built-in Notepad</div>
-                <h3 className="h3 mt-4">Pad — Notes & Tasks</h3>
-                <p className="body-md">Quick notes, code snippets, and task tracking with completion progress. Pro users get cloud sync.</p>
+            <ScrollReveal>
+              <div className="stack-card">
+                <div className="feature-text">
+                  <div className="badge">Built-in Notepad</div>
+                  <h3 className="h3 mt-4">Pad — Notes & Tasks</h3>
+                  <p className="body-md">Quick notes, code snippets, and task tracking with completion progress. Pro users get cloud sync.</p>
+                </div>
+                <div className="feature-media">
+                  <img src="/RC_pad.png" alt="Pad" />
+                </div>
               </div>
-              <div className="feature-media">
-                <img src="/RC_pad.png" alt="Pad" />
-              </div>
-            </div>
+            </ScrollReveal>
 
             {/* 4: View GitHub */}
-            <div className="stack-card reverse" style={cardStyle}>
-              <div className="feature-text">
-                <div className="badge">Deep Integration</div>
-                <h3 className="h3 mt-4">Everything connected</h3>
-                <p className="body-md">Jump directly from a chat context to the corresponding GitHub page with a single click. Seamless workflow.</p>
+            <ScrollReveal>
+              <div className="stack-card reverse">
+                <div className="feature-text">
+                  <div className="badge">Deep Integration</div>
+                  <h3 className="h3 mt-4">Everything connected</h3>
+                  <p className="body-md">Jump directly from a chat context to the corresponding GitHub page with a single click. Seamless workflow.</p>
+                </div>
+                <div className="feature-media">
+                  <img src="/RC_github.png" alt="View on GitHub" />
+                </div>
               </div>
-              <div className="feature-media">
-                <img src="/RC_github.png" alt="View on GitHub" />
-              </div>
-            </div>
+            </ScrollReveal>
 
             {/* 5: Group Chat */}
-            <div className="stack-card" style={cardStyle}>
-              <div className="feature-text">
-                <div className="badge">Collaboration</div>
-                <h3 className="h3 mt-4">Powerful Group Chats</h3>
-                <p className="body-md">Create project-specific groups, manage members, and keep your entire team aligned without leaving your repository.</p>
+            <ScrollReveal>
+              <div className="stack-card">
+                <div className="feature-text">
+                  <div className="badge">Collaboration</div>
+                  <h3 className="h3 mt-4">Powerful Group Chats</h3>
+                  <p className="body-md">Create project-specific groups, manage members, and keep your entire team aligned without leaving your repository.</p>
+                </div>
+                <div className="feature-media">
+                  <img src="/RC_group.png" alt="Group Chat" />
+                </div>
               </div>
-              <div className="feature-media">
-                <img src="/RC_group.png" alt="Group Chat" />
-              </div>
-            </div>
+            </ScrollReveal>
 
             {/* 6: Context Sharing */}
-            <div className="stack-card reverse" style={cardStyle}>
-              <div className="feature-text">
-                <div className="badge">Context Sharing</div>
-                <h3 className="h3 mt-4">Share PRs & Issues instantly</h3>
-                <p className="body-md">Select any PR or Issue on GitHub, choose a friend or group, and share — with full context attached.</p>
+            <ScrollReveal>
+              <div className="stack-card reverse">
+                <div className="feature-text">
+                  <div className="badge">Context Sharing</div>
+                  <h3 className="h3 mt-4">Share PRs & Issues instantly</h3>
+                  <p className="body-md">Select any PR or Issue on GitHub, choose a friend or group, and share — with full context attached.</p>
+                </div>
+                <div className="feature-media">
+                  <img src="/RC_share_popup.png" alt="Context Sharing" />
+                </div>
               </div>
-              <div className="feature-media">
-                <img src="/RC_share_popup.png" alt="Context Sharing" />
-              </div>
-            </div>
+            </ScrollReveal>
 
             {/* 7: Comment on GitHub */}
-            <div className="stack-card" style={cardStyle}>
-              <div className="feature-text">
-                <div className="badge">Comment on GitHub</div>
-                <h3 className="h3 mt-4">Post comments from chat</h3>
-                <p className="body-md">Write comments and post them directly to GitHub Issues. No tab switching needed.</p>
+            <ScrollReveal>
+              <div className="stack-card">
+                <div className="feature-text">
+                  <div className="badge">Comment on GitHub</div>
+                  <h3 className="h3 mt-4">Post comments from chat</h3>
+                  <p className="body-md">Write comments and post them directly to GitHub Issues. No tab switching needed.</p>
+                </div>
+                <div className="feature-media">
+                  <img src="/RC_comment.png" alt="Comment on GitHub" />
+                </div>
               </div>
-              <div className="feature-media">
-                <img src="/RC_comment.png" alt="Comment on GitHub" />
-              </div>
-            </div>
+            </ScrollReveal>
 
             {/* 8: Shared via RepoChat */}
-            <div className="stack-card reverse" style={cardStyle}>
-              <div className="feature-text">
-                <div className="badge">Shared via RepoChat</div>
-                <h3 className="h3 mt-4">Perfect context cards</h3>
-                <p className="body-md">Recipients see a formatted context card with PR title, description, and your message — attributed with "Shared via RepoChat".</p>
+            <ScrollReveal>
+              <div className="stack-card reverse">
+                <div className="feature-text">
+                  <div className="badge">Shared via RepoChat</div>
+                  <h3 className="h3 mt-4">Perfect context cards</h3>
+                  <p className="body-md">Recipients see a formatted context card with PR title, description, and your message — attributed with "Shared via RepoChat".</p>
+                </div>
+                <div className="feature-media">
+                  <img src="/RC_shared_via_RC.png" alt="Shared via RepoChat" />
+                </div>
               </div>
-              <div className="feature-media">
-                <img src="/RC_shared_via_RC.png" alt="Shared via RepoChat" />
-              </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
