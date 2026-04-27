@@ -122,17 +122,27 @@ export default function Security() {
             maxWidth: 900,
             margin: '0 auto var(--space-l)',
           }}>
-            {rlsStats.map((s, i) => (
+            {rlsStats.map((s, i) => {
+              const hues = ['#10b981', '#8b5cf6', '#3b82f6', '#f59e0b']
+              const color = hues[i]
+              return (
               <div key={i} className="security-grid-card" style={{
                 borderRadius: 16,
                 padding: '24px 20px',
                 textAlign: 'center',
-              }}>
-                <div className="gradient-text" style={{ fontSize: '2rem', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1 }}>{s.value}</div>
+                '--card-glow': `${color}40`,
+              } as React.CSSProperties}>
+                <div style={{ 
+                  fontSize: '2rem', fontWeight: 800, 
+                  background: `linear-gradient(135deg, #fff 0%, ${color} 100%)`,
+                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                  letterSpacing: '-0.04em', lineHeight: 1 
+                }}>{s.value}</div>
                 <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-primary)', marginTop: 6 }}>{s.label}</div>
                 <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: 4, lineHeight: 1.4 }}>{s.sub}</div>
               </div>
-            ))}
+              )
+            })}
           </div>
         </ScrollReveal>
 
@@ -155,7 +165,9 @@ export default function Security() {
                     borderRadius: 20,
                     padding: '28px 32px',
                     cursor: 'pointer',
-                  }}
+                    '--card-glow': `${layer.color}50`,
+                    '--card-glow-bg': `${layer.color}15`,
+                  } as React.CSSProperties}
                   onClick={() => setExpandedLayer(isExpanded ? null : i)}
                 >
                   {/* Header */}
@@ -289,7 +301,10 @@ export default function Security() {
           maxWidth: 860,
           margin: '0 auto var(--space-l)',
         }}>
-          {serverSecurity.map((item, i) => (
+          {serverSecurity.map((item, i) => {
+            const hues = ['#8b5cf6', '#a855f7', '#3b82f6', '#f59e0b']
+            const color = hues[i]
+            return (
             <ScrollReveal key={i} delay={(i % 3) + 1}>
               <div className="security-grid-card" style={{
                 borderRadius: 18,
@@ -298,13 +313,14 @@ export default function Security() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 12,
-              }}>
+                '--card-glow': `${color}40`,
+              } as React.CSSProperties}>
                 <div style={{
                   width: 40, height: 40, borderRadius: 12,
-                  background: 'rgba(139,92,246,0.1)',
-                  border: '1px solid rgba(139,92,246,0.12)',
+                  background: `${color}15`,
+                  border: `1px solid ${color}25`,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: 'var(--accent)',
+                  color: color,
                 }}>
                   {item.icon}
                 </div>
@@ -312,7 +328,8 @@ export default function Security() {
                 <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>{item.desc}</p>
               </div>
             </ScrollReveal>
-          ))}
+            )
+          })}
         </div>
 
         {/* ─── Responsible Disclosure ─── */}
