@@ -123,24 +123,12 @@ export default function Security() {
             margin: '0 auto var(--space-l)',
           }}>
             {rlsStats.map((s, i) => (
-              <div key={i} style={{
-                background: 'rgba(15, 15, 20, 0.6)',
-                border: '1px solid rgba(255,255,255,0.07)',
+              <div key={i} className="security-grid-card" style={{
                 borderRadius: 16,
                 padding: '24px 20px',
                 textAlign: 'center',
-                transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
-              }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(139,92,246,0.3)'
-                  ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)'
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)'
-                  ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0)'
-                }}
-              >
-                <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--accent)', letterSpacing: '-0.04em', lineHeight: 1 }}>{s.value}</div>
+              }}>
+                <div className="gradient-text" style={{ fontSize: '2rem', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1 }}>{s.value}</div>
                 <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-primary)', marginTop: 6 }}>{s.label}</div>
                 <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: 4, lineHeight: 1.4 }}>{s.sub}</div>
               </div>
@@ -162,24 +150,13 @@ export default function Security() {
             return (
               <ScrollReveal key={i} delay={(i % 3) + 1}>
                 <div
+                  className={`security-grid-card ${isExpanded ? 'expanded' : ''}`}
                   style={{
-                    background: isExpanded
-                      ? `linear-gradient(135deg, ${layer.color}08 0%, transparent 60%), rgba(15, 15, 20, 0.6)`
-                      : 'rgba(15, 15, 20, 0.6)',
-                    border: `1px solid ${isExpanded ? `${layer.color}40` : 'rgba(255,255,255,0.07)'}`,
                     borderRadius: 20,
                     padding: '28px 32px',
                     cursor: 'pointer',
-                    transition: 'all 0.5s cubic-bezier(.22,1,.36,1)',
-                    overflow: 'hidden',
                   }}
                   onClick={() => setExpandedLayer(isExpanded ? null : i)}
-                  onMouseEnter={e => {
-                    if (!isExpanded) (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.14)'
-                  }}
-                  onMouseLeave={e => {
-                    if (!isExpanded) (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)'
-                  }}
                 >
                   {/* Header */}
                   <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
@@ -246,17 +223,10 @@ export default function Security() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div style={{
+          <div className="security-grid-card" style={{
             maxWidth: 860, margin: '0 auto var(--space-l)',
-            background: `radial-gradient(circle at top left, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
-              linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-              rgba(15, 15, 20, 0.5)`,
-            backgroundSize: '100% 100%, 24px 24px, 24px 24px',
-            border: '1px solid rgba(255,255,255,0.07)',
             borderRadius: 20,
             padding: '32px',
-            overflow: 'hidden',
           }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               {extensionSecurity.permissions.map((perm, i) => (
@@ -321,26 +291,14 @@ export default function Security() {
         }}>
           {serverSecurity.map((item, i) => (
             <ScrollReveal key={i} delay={(i % 3) + 1}>
-              <div style={{
-                background: 'rgba(15, 15, 20, 0.6)',
-                border: '1px solid rgba(255,255,255,0.07)',
+              <div className="security-grid-card" style={{
                 borderRadius: 18,
                 padding: '28px 24px',
-                transition: 'all 0.4s cubic-bezier(.22,1,.36,1)',
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 12,
-              }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.14)'
-                  ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)'
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)'
-                  ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0)'
-                }}
-              >
+              }}>
                 <div style={{
                   width: 40, height: 40, borderRadius: 12,
                   background: 'rgba(139,92,246,0.1)',
@@ -359,10 +317,8 @@ export default function Security() {
 
         {/* ─── Responsible Disclosure ─── */}
         <ScrollReveal>
-          <div style={{
+          <div className="security-grid-card" style={{
             maxWidth: 860, margin: '0 auto var(--space-l)',
-            background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.06) 0%, transparent 60%), rgba(15, 15, 20, 0.6)',
-            border: '1px solid rgba(245, 158, 11, 0.2)',
             borderRadius: 20,
             padding: '32px',
             display: 'flex',
