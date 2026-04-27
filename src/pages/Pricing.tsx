@@ -139,7 +139,7 @@ export default function Pricing() {
         </div>
 
         {/* ===== COMPARISON TABLE ===== */}
-        <div className="section" style={{ marginTop: 'var(--space-xl)' }}>
+        <div className="section" style={{ marginTop: 'var(--space-l)' }}>
           <ScrollReveal>
             <div className="section-head" style={{ marginBottom: 'var(--space-l)' }}>
               <h2 className="h3">Full Comparison</h2>
