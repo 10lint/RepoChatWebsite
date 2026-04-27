@@ -69,7 +69,7 @@ export default function Pricing() {
     <div className="legal-page">
       <div className="container">
         <ScrollReveal>
-          <div className="section-head" style={{ marginBottom: 'var(--space-xl)' }}>
+          <div className="section-head" style={{ marginBottom: 'var(--space-l)' }}>
             <div className="badge mb-6"><Zap size={12} /> Pricing</div>
             <h1 className="h2">Simple, Transparent<br /><span className="gradient-text">Pricing</span></h1>
             <p>Start free. Upgrade when you need more. Cancel anytime.</p>
