@@ -246,7 +246,7 @@ html.nav-open-lock body {
     rgba(15, 15, 20, 0.6);
   background-size: 100% 100%, 20px 20px, 20px 20px;
   backdrop-filter: blur(30px);
-  border: 1.5px solid rgba(139, 92, 246, 0.2);
+  border: 1.5px solid var(--card-glow, rgba(139, 92, 246, 0.4));
   border-radius: 24px;
   padding: 60px;
   box-shadow: 
