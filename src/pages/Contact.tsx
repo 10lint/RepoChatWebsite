@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Send, Mail, GitFork, MessageSquare } from 'lucide-react'
+import { Send, MessageSquare, CheckCircle2 } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 export default function Contact() {
@@ -13,82 +13,76 @@ export default function Contact() {
   return (
     <div className="legal-page">
       <div className="container">
+
+        {/* ─── Hero ─── */}
         <ScrollReveal>
-          <div className="section-header">
-            <div className="badge mb-4"><MessageSquare size={14} /> Contact</div>
-            <h1 className="heading-lg">Get in Touch</h1>
+          <div className="section-head" style={{ marginBottom: 'var(--space-m)' }}>
+            <div className="badge mb-6"><MessageSquare size={14} /> Contact</div>
+            <h1 className="h2">Get in <span className="gradient-text">Touch</span></h1>
             <p>Have a question, found a bug, or want to say hi? We'd love to hear from you.</p>
           </div>
         </ScrollReveal>
 
-        <div className="grid-2" style={{ maxWidth: 900, margin: '0 auto', alignItems: 'start' }}>
-          {/* Contact Form */}
-          <ScrollReveal delay={1}>
-            <div className="card">
-              {submitted ? (
-                <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-                  <div style={{ fontSize: '3rem', marginBottom: 16 }}>🎉</div>
-                  <h3 className="heading-sm">Message Sent!</h3>
-                  <p className="text-secondary mt-2">Thanks for reaching out. We'll get back to you within 48 hours.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit}>
-                  <h3 className="heading-sm mb-4">Send us a message</h3>
-                  <div className="form-group">
-                    <label htmlFor="contact-name">Name</label>
-                    <input id="contact-name" type="text" className="form-input" placeholder="Your name" required />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="contact-email">Email</label>
-                    <input id="contact-email" type="email" className="form-input" placeholder="you@example.com" required />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="contact-subject">Subject</label>
-                    <input id="contact-subject" type="text" className="form-input" placeholder="What's this about?" required />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="contact-message">Message</label>
-                    <textarea id="contact-message" className="form-input" placeholder="Tell us more..." required />
-                  </div>
-                  <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                    <Send size={16} /> Send Message
-                  </button>
-                </form>
-              )}
-            </div>
-          </ScrollReveal>
-
-          {/* Contact Info */}
-          <ScrollReveal delay={2}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-              <div className="card">
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                  <div className="card-icon" style={{ marginBottom: 0, width: 40, height: 40 }}><Mail size={18} /></div>
-                  <h4 className="heading-sm" style={{ fontSize: '1rem' }}>Email Support</h4>
-                </div>
-                <p className="text-secondary text-sm">For general questions and support:</p>
-                <a href="mailto:alexcj10@yahoo.com" style={{ color: 'var(--primary)', fontSize: '0.95rem', fontWeight: 600, display: 'block', marginTop: 8 }}>alexcj10@yahoo.com</a>
+        {/* ─── Contact Form ─── */}
+        <ScrollReveal delay={1}>
+          <div className="security-grid-card" style={{
+            borderRadius: 20, padding: '36px 32px',
+            maxWidth: 540, margin: '0 auto',
+            '--card-glow': 'rgba(139, 92, 246, 0.4)',
+            '--card-glow-bg': 'rgba(139, 92, 246, 0.3)',
+          } as React.CSSProperties}>
+            {submitted ? (
+              <div style={{ textAlign: 'center', padding: '40px 20px' }}>
+                <div style={{
+                  width: 64, height: 64, borderRadius: '50%',
+                  background: 'rgba(16, 185, 129, 0.12)',
+                  border: '1px solid rgba(16, 185, 129, 0.2)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  margin: '0 auto 16px',
+                }}><CheckCircle2 size={28} style={{ color: '#10b981' }} /></div>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 6 }}>Message Sent!</h3>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>We'll get back to you within 48 hours.</p>
               </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>Send us a message</h3>
+                <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: 24 }}>We'll respond within 48 hours</p>
 
-              <div className="card">
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                  <div className="card-icon" style={{ marginBottom: 0, width: 40, height: 40 }}><GitFork size={18} /></div>
-                  <h4 className="heading-sm" style={{ fontSize: '1rem' }}>Bug Reports</h4>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginBottom: 14 }} className="contact-form-row">
+                  <div>
+                    <label htmlFor="contact-name" className="contact-label">Name</label>
+                    <input id="contact-name" type="text" className="form-input" placeholder="Your name" required
+                      style={{ background: 'rgba(0,0,0,0.3)', borderRadius: 10 }} />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-email" className="contact-label">Email</label>
+                    <input id="contact-email" type="email" className="form-input" placeholder="you@example.com" required
+                      style={{ background: 'rgba(0,0,0,0.3)', borderRadius: 10 }} />
+                  </div>
                 </div>
-                <p className="text-secondary text-sm">Found a bug? Open an issue on GitHub:</p>
-                <a href="https://github.com/alexcj10/repochat/issues" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', fontSize: '0.95rem', fontWeight: 600, display: 'block', marginTop: 8 }}>Open an Issue →</a>
-              </div>
 
-              <div className="card">
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                  <div className="card-icon" style={{ marginBottom: 0, width: 40, height: 40 }}><MessageSquare size={18} /></div>
-                  <h4 className="heading-sm" style={{ fontSize: '1rem' }}>Response Time</h4>
+                <div style={{ marginBottom: 14 }}>
+                  <label htmlFor="contact-subject" className="contact-label">Subject</label>
+                  <input id="contact-subject" type="text" className="form-input" placeholder="What's this about?" required
+                    style={{ background: 'rgba(0,0,0,0.3)', borderRadius: 10 }} />
                 </div>
-                <p className="text-secondary text-sm">We typically respond within <strong>48 hours</strong>. Pro subscribers receive priority support.</p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
+
+                <div style={{ marginBottom: 20 }}>
+                  <label htmlFor="contact-message" className="contact-label">Message</label>
+                  <textarea id="contact-message" className="form-input" placeholder="Tell us more..." required
+                    style={{ background: 'rgba(0,0,0,0.3)', borderRadius: 10, minHeight: 120 }} />
+                </div>
+
+                <button type="submit" className="btn btn-primary" style={{
+                  width: '100%', justifyContent: 'center', borderRadius: 10, padding: '12px 24px',
+                }}>
+                  <Send size={15} /> Send Message
+                </button>
+              </form>
+            )}
+          </div>
+        </ScrollReveal>
+
       </div>
     </div>
   )

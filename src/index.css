@@ -866,9 +866,16 @@ html.nav-open-lock body {
    ============================================ */
 .form-group{margin-bottom:18px}
 .form-group label{display:block;font-size:.82rem;font-weight:500;margin-bottom:5px;color:var(--text-secondary)}
-.form-input{width:100%;padding:11px 14px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-size:.875rem;transition:border-color .2s}
-.form-input:focus{outline:none;border-color:var(--accent)}
+.form-input{width:100%;padding:11px 14px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-size:.875rem;transition:border-color .3s ease, box-shadow .3s ease}
+.form-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(139,92,246,0.08)}
 textarea.form-input{min-height:110px;resize:vertical}
+
+/* Contact Page Layout */
+.contact-label{display:block;font-size:.78rem;font-weight:600;margin-bottom:6px;color:var(--text-secondary);letter-spacing:.01em}
+@media(max-width: 768px) {
+  .contact-methods-grid { grid-template-columns: 1fr !important; }
+  .contact-form-row { grid-template-columns: 1fr !important; }
+}
 
 /* ============================================
    SCROLL REVEAL
