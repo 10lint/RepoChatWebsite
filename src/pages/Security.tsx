@@ -115,16 +115,12 @@ export default function Security() {
 
         {/* ─── RLS Stats Bar ─── */}
         <ScrollReveal>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 16,
+          <div className="rls-stats-grid" style={{
             maxWidth: 900,
             margin: '0 auto var(--space-l)',
           }}>
             {rlsStats.map((s, i) => {
               const hues = ['#10b981', '#8b5cf6', '#3b82f6', '#f59e0b']
-              const opacities = ['30', '30', '30', '30']
               const color = hues[i]
               return (
                 <div key={i} className="security-grid-card" style={{
@@ -132,17 +128,28 @@ export default function Security() {
                   padding: '24px 20px',
                   textAlign: 'center',
                   '--card-glow': `${color}40`,
-                  '--card-glow-bg': `${color}${opacities[i]}`,
+                  '--card-glow-bg': `${color}30`,
+                  background: `
+                    radial-gradient(circle at top left, ${color}25 0%, transparent 70%),
+                    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                    rgba(15, 15, 20, 0.5)
+                  `,
+                  backgroundSize: '100% 100%, 24px 24px, 24px 24px',
                 } as React.CSSProperties}>
                   <div style={{
-                    fontSize: '2rem', fontWeight: 800,
-                    background: `
-                  radial-gradient(circle at top left, ${color}30 0%, transparent 70%),`,
-                    WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                    letterSpacing: '-0.04em', lineHeight: 1
+                    fontSize: '2.2rem', fontWeight: 900,
+                    backgroundImage: `linear-gradient(135deg, #ffffff 0%, ${color} 100%)`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                    letterSpacing: '-0.04em',
+                    lineHeight: 1.1,
+                    marginBottom: 4
                   }}>{s.value}</div>
-                  <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-primary)', marginTop: 6 }}>{s.label}</div>
-                  <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: 4, lineHeight: 1.4 }}>{s.sub}</div>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 2 }}>{s.label}</div>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>{s.sub}</div>
                 </div>
               )
             })}
