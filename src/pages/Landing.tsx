@@ -1,8 +1,40 @@
 import { useRef } from 'react'
-import { ArrowRight, Shield, Zap } from 'lucide-react'
+import { ArrowRight, Shield, Zap, Check, X, Sparkles } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
+
+const comparisonRows = [
+  { feature: 'Friends', free: '15', pro: 'Unlimited' },
+  { feature: 'Groups', free: '5', pro: 'Unlimited' },
+  { feature: 'Pad Entries', free: '10', pro: 'Unlimited' },
+  { feature: 'Custom Lists', free: '3', pro: 'Unlimited' },
+  { feature: 'Pinned Messages', free: '5', pro: 'Unlimited' },
+  { feature: 'Starred Messages', free: '50', pro: 'Unlimited' },
+  { feature: 'Pinned Chats', free: '3', pro: '15' },
+  { feature: 'Archived Chats', free: '5', pro: 'Unlimited' },
+  { feature: 'GitHub Context Sharing', free: true, pro: true },
+  { feature: 'Smart Triage', free: true, pro: true },
+  { feature: 'Message Reactions', free: true, pro: true },
+  { feature: 'Online Presence', free: true, pro: true },
+  { feature: 'Dev DNA & Power Stats', free: true, pro: true },
+  { feature: 'Quick Share & Templates', free: true, pro: true },
+  { feature: 'Chat Export', free: true, pro: true },
+  { feature: 'Theming & Personalization', free: true, pro: true },
+  { feature: 'Keyboard Shortcuts', free: true, pro: true },
+  { feature: 'Cloud Data Sync', free: false, pro: true },
+  { feature: 'Priority Feature Access', free: false, pro: true },
+  { feature: 'Premium Developer Support', free: false, pro: true },
+]
+
+function CellValue({ value }: { value: string | boolean }) {
+  if (typeof value === 'boolean') {
+    return value
+      ? <span className="pricing-cell-icon yes"><Check size={15} strokeWidth={3} /></span>
+      : <span className="pricing-cell-icon no"><X size={15} strokeWidth={2.5} /></span>
+  }
+  return <span className="pricing-cell-text">{value}</span>
+}
 
 export default function Landing() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -435,95 +467,32 @@ export default function Landing() {
             </div>
           </ScrollReveal>
 
-          <div className="pricing-matrix-container">
-            <table className="pricing-table">
-              <thead>
-                <tr>
-                  <th className="feature-col">Feature</th>
-                  <th className="tier-col">Free</th>
-                  <th className="tier-col pro-col">Pro</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="tier-header">
-                  <td className="feature-col">
-                    <p className="body-sm">Start your journey with essential features.</p>
-                  </td>
-                  <td className="tier-col">
-                    <span className="price">$0</span>
-                    <button className="btn btn-ghost w-full mt-2">Get Started</button>
-                  </td>
-                  <td className="tier-col pro-col">
-                    <span className="price">$4.99</span>
-                    <button className="btn btn-primary w-full mt-2" onClick={() => window.open('https://buy.stripe.com/8wM8xM3Tj7Yx608eUU', '_blank')}>Upgrade</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="feature-col">
-                    Direct Messages
-                    <span className="feature-info">1-on-1 private messaging</span>
-                  </td>
-                  <td className="tier-col">15 Friends</td>
-                  <td className="tier-col pro-col"><strong>Unlimited</strong></td>
-                </tr>
-                <tr>
-                  <td className="feature-col">
-                    Group Chats
-                    <span className="feature-info">Collaborative group environments</span>
-                  </td>
-                  <td className="tier-col">5 Groups</td>
-                  <td className="tier-col pro-col"><strong>Unlimited</strong></td>
-                </tr>
-                <tr>
-                  <td className="feature-col">
-                    GitHub Context
-                    <span className="feature-info">Attach PRs, Issues & Branches</span>
-                  </td>
-                  <td className="tier-col"><span className="status-icon check">✓</span></td>
-                  <td className="tier-col pro-col"><span className="status-icon check">✓</span></td>
-                </tr>
-                <tr>
-                  <td className="feature-col">
-                    Smart Triage
-                    <span className="feature-info">Custom GitHub actions in chat</span>
-                  </td>
-                  <td className="tier-col"><span className="status-icon check">✓</span></td>
-                  <td className="tier-col pro-col"><span className="status-icon check">✓</span></td>
-                </tr>
-                <tr>
-                  <td className="feature-col">
-                    Pad Entries
-                    <span className="feature-info">Note and task management</span>
-                  </td>
-                  <td className="tier-col">10 Entries</td>
-                  <td className="tier-col pro-col"><strong>Unlimited</strong></td>
-                </tr>
-                <tr>
-                  <td className="feature-col">
-                    Cloud Data Sync
-                    <span className="feature-info">Cross-device persistence</span>
-                  </td>
-                  <td className="tier-col"><span className="status-icon cross">✕</span></td>
-                  <td className="tier-col pro-col"><span className="status-icon check">✓</span></td>
-                </tr>
-                <tr>
-                  <td className="feature-col">
-                    Custom Accents
-                    <span className="feature-info">Personalize your UI colors</span>
-                  </td>
-                  <td className="tier-col"><span className="status-icon cross">✕</span></td>
-                  <td className="tier-col pro-col"><span className="status-icon check">✓</span></td>
-                </tr>
-                <tr>
-                  <td className="feature-col">
-                    Support
-                    <span className="feature-info">Response time and priority</span>
-                  </td>
-                  <td className="tier-col">Community</td>
-                  <td className="tier-col pro-col">Priority</td>
-                </tr>
-              </tbody>
-            </table>
+          {/* ===== FULL COMPARISON TABLE ONLY ===== */}
+          <div style={{ marginTop: 'var(--space-m)' }}>
+            <ScrollReveal delay={1}>
+              <div className="comparison-table-wrap">
+                <table className="comparison-table">
+                  <thead>
+                    <tr>
+                      <th className="feature-col">Feature</th>
+                      <th className="free-col">Free</th>
+                      <th className="pro-col">
+                        <span className="pro-col-label">Pro <Sparkles size={12} /></span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {comparisonRows.map((row, i) => (
+                      <tr key={i}>
+                        <td className="feature-col">{row.feature}</td>
+                        <td className="free-col"><CellValue value={row.free} /></td>
+                        <td className="pro-col"><CellValue value={row.pro} /></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
