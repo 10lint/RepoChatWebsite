@@ -402,7 +402,7 @@ export default function Security() {
         <ScrollReveal>
           <div style={{
             textAlign: 'center', maxWidth: 640, margin: '0 auto',
-            padding: 'var(--space-l) 0',
+            paddingTop: 'var(--space-m)', paddingBottom: 'var(--space-l)',
           }}>
             <h2 className="h3">Our Security Promise</h2>
             <p className="body-md" style={{ lineHeight: 1.8, marginTop: 16 }}>
