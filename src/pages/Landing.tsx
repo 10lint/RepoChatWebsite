@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { ArrowRight, Shield, Zap, Check, X, Sparkles } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
 
@@ -511,7 +512,7 @@ export default function Landing() {
                   <li><span className="ck">✓</span> Complete per-user data isolation</li>
                   <li><span className="ck">✓</span> Encrypted in transit & at rest</li>
                 </ul>
-                <a href="/security" className="btn btn-ghost mt-8">Security Details <ArrowRight size={14} /></a>
+                <Link to="/security" className="btn btn-ghost mt-8">Security Details <ArrowRight size={14} /></Link>
               </div>
             </ScrollReveal>
 
