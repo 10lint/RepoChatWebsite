@@ -1439,9 +1439,3 @@ textarea.form-input{min-height:110px;resize:vertical}
     gap: 12px;
   }
 }
-
-@media (max-width: 480px) {
-  .rls-stats-grid {
-    grid-template-columns: 1fr;
-  }
-}
