@@ -243,7 +243,9 @@ export default function Security() {
             maxWidth: 860, margin: '0 auto var(--space-l)',
             borderRadius: 20,
             padding: '32px',
-          }}>
+            '--card-glow': 'rgba(139, 92, 246, 0.4)',
+            '--card-glow-bg': 'rgba(139, 92, 246, 0.22)',
+          } as React.CSSProperties}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               {extensionSecurity.permissions.map((perm, i) => (
                 <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
