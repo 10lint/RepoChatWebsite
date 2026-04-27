@@ -400,12 +400,12 @@ html.nav-open-lock body {
 
 .plan-card.pro {
   background:
-    radial-gradient(circle at top right, var(--card-glow-bg, rgba(139, 92, 246, 0.15)) 0%, transparent 60%),
+    radial-gradient(circle at top right, var(--card-glow-bg, rgba(139, 92, 246, 0.08)) 0%, transparent 60%),
     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     rgba(15, 15, 20, 0.5);
   background-size: 100% 100%, 24px 24px, 24px 24px;
-  border-color: var(--card-glow, rgba(139, 92, 246, 0.5)) !important;
+  border-color: var(--card-glow, rgba(139, 92, 246, 0.4)) !important;
 }
 
 .plan-badge {
