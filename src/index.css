@@ -189,6 +189,11 @@ html.nav-open-lock body {
 .hero-mockup{position:relative;z-index:2;width:100%;max-width:min(clamp(800px, 85vw, 1140px), 100%);margin:0 auto;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:0 32px 80px -20px rgba(0,0,0,.8),0 0 60px -20px var(--accent-glow)}
 .hero-mockup img{width:100%;display:block}
 
+/* Fix for Mobile Desktop Mode (tall viewports with desktop widths) */
+@media (min-width: 769px) and (orientation: portrait) {
+  .hero { min-height: auto; padding-bottom: var(--space-xl); }
+}
+
 @media(max-width: 768px) {
   .hero-inner { padding: 0 16px; }
   .btn-lg { padding: 12px 24px; font-size: 0.85rem; }
