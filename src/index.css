@@ -191,7 +191,7 @@ html.nav-open-lock body {
 
 /* Fix for Mobile Desktop Mode (tall viewports with desktop widths) */
 @media (min-width: 769px) and (orientation: portrait) {
-  .hero { min-height: auto; padding-bottom: var(--space-xl); }
+  .hero { min-height: auto; padding-bottom: var(--space-m); }
 }
 
 @media(max-width: 768px) {
