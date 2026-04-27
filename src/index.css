@@ -198,7 +198,7 @@ html.nav-open-lock body {
   .hero-inner { padding: 0 16px; }
   .btn-lg { padding: 12px 24px; font-size: 0.85rem; }
   .btn { padding: 10px 20px; font-size: 0.8rem; }
-  .hero { padding-bottom: 0; min-height: auto; }
+  .hero { padding-bottom: var(--space-l); min-height: auto; }
   .section { padding-top: var(--space-m); }
   
   .trust-content {
