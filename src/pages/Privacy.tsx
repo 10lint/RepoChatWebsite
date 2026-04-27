@@ -10,7 +10,14 @@ const highlights = [
 ]
 
 /* ─── Privacy Sections ─── */
-const sections = [
+type SubSection = {
+  desc: string
+  items: string[]
+  subtitle?: string
+  note?: string
+}
+
+const sections: { icon: React.ReactNode; title: string; color: string; subsections: SubSection[] }[] = [
   {
     icon: <Database size={22} />,
     title: '1. Information We Collect',
