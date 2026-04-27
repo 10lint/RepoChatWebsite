@@ -398,12 +398,10 @@ html.nav-open-lock body {
     radial-gradient(circle at top right, rgba(139, 92, 246, 0.1) 0%, transparent 60%),
     rgba(15, 15, 20, 0.5);
   border-color: rgba(139, 92, 246, 0.25);
-  box-shadow: 0 0 60px -20px rgba(139, 92, 246, 0.15);
 }
 
 .plan-card.pro:hover {
   border-color: rgba(139, 92, 246, 0.4);
-  box-shadow: 0 0 80px -20px rgba(139, 92, 246, 0.25);
 }
 
 .plan-badge {
@@ -535,12 +533,10 @@ html.nav-open-lock body {
 .plan-btn.pro {
   background: var(--accent);
   color: #fff;
-  box-shadow: 0 4px 20px -4px rgba(139, 92, 246, 0.4);
 }
 
 .plan-btn.pro:hover {
   filter: brightness(1.1);
-  box-shadow: 0 8px 30px -4px rgba(139, 92, 246, 0.5);
   transform: translateY(-1px);
 }
 
@@ -1154,9 +1150,6 @@ textarea.form-input{min-height:110px;resize:vertical}
   border-color: rgba(255, 255, 255, 0.14);
   background-color: rgba(20, 20, 30, 0.6);
   transform: translateY(-4px);
-  box-shadow:
-    0 20px 60px -15px rgba(0, 0, 0, 0.6),
-    0 0 30px -10px rgba(139, 92, 246, 0.08);
 }
 
 .feature-card-full:hover::before {
