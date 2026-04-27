@@ -202,7 +202,7 @@ export default function Security() {
                   </div>
 
                   {/* Body Content */}
-                  <div style={{ paddingLeft: 0 }}>
+                  <div style={{ paddingLeft: 12 }}>
                     <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>{layer.desc}</p>
                   </div>
 
@@ -215,7 +215,7 @@ export default function Security() {
                     marginTop: isExpanded ? 16 : 0,
                     borderTop: isExpanded ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
                   }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, paddingLeft: 64 }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, paddingLeft: 16 }}>
                       {layer.details.map((detail, j) => (
                         <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
                           <span style={{ color: layer.color, fontSize: '0.7rem', marginTop: 5, flexShrink: 0 }}>●</span>
