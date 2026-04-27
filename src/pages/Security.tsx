@@ -127,23 +127,23 @@ export default function Security() {
               const opacities = ['30', '30', '30', '30']
               const color = hues[i]
               return (
-              <div key={i} className="security-grid-card" style={{
-                borderRadius: 16,
-                padding: '24px 20px',
-                textAlign: 'center',
-                '--card-glow': `${color}40`,
-                '--card-glow-bg': `${color}${opacities[i]}`,
-              } as React.CSSProperties}>
-                <div style={{ 
-                  fontSize: '2rem', fontWeight: 800, 
-                  background: `
+                <div key={i} className="security-grid-card" style={{
+                  borderRadius: 16,
+                  padding: '24px 20px',
+                  textAlign: 'center',
+                  '--card-glow': `${color}40`,
+                  '--card-glow-bg': `${color}${opacities[i]}`,
+                } as React.CSSProperties}>
+                  <div style={{
+                    fontSize: '2rem', fontWeight: 800,
+                    background: `
                   radial-gradient(circle at top left, ${color}30 0%, transparent 70%),`,
-                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                  letterSpacing: '-0.04em', lineHeight: 1 
-                }}>{s.value}</div>
-                <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-primary)', marginTop: 6 }}>{s.label}</div>
-                <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: 4, lineHeight: 1.4 }}>{s.sub}</div>
-              </div>
+                    WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                    letterSpacing: '-0.04em', lineHeight: 1
+                  }}>{s.value}</div>
+                  <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-primary)', marginTop: 6 }}>{s.label}</div>
+                  <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: 4, lineHeight: 1.4 }}>{s.sub}</div>
+                </div>
               )
             })}
           </div>
@@ -313,32 +313,32 @@ export default function Security() {
             const opacities = ['30', '30', '30', '30']
             const color = hues[i]
             return (
-            <ScrollReveal key={i} delay={(i % 3) + 1}>
-              <div className="security-grid-card" style={{
-                borderRadius: 18,
-                padding: '28px 24px',
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 12,
-                '--card-glow': `${color}40`,
-                '--card-glow-bg': `${color}${opacities[i]}`,
-              } as React.CSSProperties}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                  <div style={{
-                    width: 40, height: 40, borderRadius: 12,
-                    background: `${color}15`,
-                    border: `1px solid ${color}25`,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: color,
-                  }}>
-                    {item.icon}
+              <ScrollReveal key={i} delay={(i % 3) + 1}>
+                <div className="security-grid-card" style={{
+                  borderRadius: 18,
+                  padding: '28px 24px',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 12,
+                  '--card-glow': `${color}40`,
+                  '--card-glow-bg': `${color}${opacities[i]}`,
+                } as React.CSSProperties}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                    <div style={{
+                      width: 40, height: 40, borderRadius: 12,
+                      background: `${color}15`,
+                      border: `1px solid ${color}25`,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      color: color,
+                    }}>
+                      {item.icon}
+                    </div>
+                    <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.01em', margin: 0 }}>{item.title}</h3>
                   </div>
-                  <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.01em', margin: 0 }}>{item.title}</h3>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>{item.desc}</p>
                 </div>
-                <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>{item.desc}</p>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
             )
           })}
         </div>
@@ -350,7 +350,7 @@ export default function Security() {
             borderRadius: 20,
             padding: '32px',
             '--card-glow': 'rgba(245, 158, 11, 0.4)',
-            '--card-glow-bg': 'rgba(245, 158, 11, 0.30)',
+            '--card-glow-bg': 'rgba(245, 158, 11, 0.25)',
           } as React.CSSProperties}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
               <div style={{
