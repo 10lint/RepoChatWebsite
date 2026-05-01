@@ -27,7 +27,7 @@ const features = [
     icon: <ListTodo size={22} />,
     title: 'Smart Task Assignments',
     desc: 'Assign PR reviewers and Issue owners directly from the chat. Track task progression from pending to review to done in real-time.',
-    details: ['Assign tasks without leaving chat', 'Track pending, review, and done states', 'Visual task status indicators', 'Automated sync with GitHub assignees'],
+    details: ['Assign tasks without leaving chat', 'Track pending, review, and done states', 'Visual task status indicators', 'Clear task ownership visibility'],
     tier: 'Pro Only'
   },
   {
