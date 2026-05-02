@@ -69,7 +69,7 @@ const features = [
     icon: <Smile size={22} />,
     title: 'Message Reactions',
     desc: 'React to messages with emoji. Full emoji picker with categorized browsing — express yourself without typing a full reply.',
-    details: ['Full emoji picker with categories', 'Multiple reactions per message', 'Visual reaction counts with tooltips', 'One-tap to toggle reactions'],
+    details: ['Full emoji picker with categories', 'Real-time reaction sync', 'Visual reaction counts with tooltips', 'One-tap to toggle reactions'],
     tier: 'All Plans'
   },
   {
