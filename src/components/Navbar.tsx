@@ -68,7 +68,7 @@ export default function Navbar() {
           <span>RepoChat</span>
         </Link>
 
-        {/* Desktop Links */}
+        {/* Desktop Links — centered */}
         <ul className="nav-links desktop-only">
           <li><Link to="/features">Features</Link></li>
           <li><Link to="/pricing">Pricing</Link></li>
@@ -76,8 +76,9 @@ export default function Navbar() {
           <li><Link to="/contact">Contact</Link></li>
         </ul>
 
-        <div className="nav-right desktop-only">
-          {!loading && user && avatarUrl && (
+        {/* Desktop Avatar — right aligned */}
+        <div className="nav-end desktop-only">
+          {!loading && user && avatarUrl ? (
             <div className="nav-user-area" ref={dropdownRef}>
               <button
                 className="nav-avatar-btn"
@@ -129,9 +130,13 @@ export default function Navbar() {
                 )}
               </AnimatePresence>
             </div>
+          ) : (
+            /* Invisible spacer to keep nav links centered even when no avatar */
+            <div style={{ width: 32 }} />
           )}
         </div>
 
+        {/* Mobile: avatar + hamburger */}
         <div className="nav-right-mobile">
           {!loading && user && avatarUrl && (
             <img src={avatarUrl} alt="" className="nav-avatar nav-avatar-mobile" />

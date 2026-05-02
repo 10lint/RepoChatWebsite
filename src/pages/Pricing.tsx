@@ -80,10 +80,10 @@ function CellValue({ value }: { value: string | boolean }) {
 }
 
 export default function Pricing() {
-  const { user, profile, loading } = useAuth()
+  const { user, profile, loading, refreshProfile } = useAuth()
   const [authModalOpen, setAuthModalOpen] = useState(false)
   const [checkoutLoading, setCheckoutLoading] = useState(false)
-  const isPro = profile?.is_pro === true
+  const isPro = !!profile?.is_pro
 
   // After OAuth redirect: if user just signed in and is NOT pro, auto-open checkout
   const openCheckout = useCallback((userId: string) => {
@@ -106,8 +106,8 @@ export default function Pricing() {
         if (!error && data?.is_pro) {
           clearInterval(pollInterval)
           setCheckoutLoading(false)
-          // Force page re-render by reloading profile
-          window.location.reload()
+          // Refresh the profile in context to update UI without full reload
+          await refreshProfile()
           return
         }
       } catch { /* ignore */ }
@@ -120,7 +120,7 @@ export default function Pricing() {
 
     // Stop loading state after a moment for UX
     setTimeout(() => setCheckoutLoading(false), 3000)
-  }, [])
+  }, [refreshProfile])
 
   // Detect post-OAuth redirect: user just signed in, should we auto-open checkout?
   useEffect(() => {
