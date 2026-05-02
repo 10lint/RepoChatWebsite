@@ -203,8 +203,8 @@ export default function Landing() {
               <div className="stack-card reverse">
                 <div className="feature-text">
                   <div className="badge">Shared via RepoChat</div>
-                  <h3 className="h3 mt-4">Perfect context cards</h3>
-                  <p className="body-md">Recipients see a formatted context card with PR title, description, and your message — attributed with "Shared via RepoChat".</p>
+                  <h3 className="h3 mt-4">Clear Comment Attribution</h3>
+                  <p className="body-md">Comments posted from RepoChat are synced directly to the respective PRs and Issues on GitHub, including a small "Shared via RepoChat" attribution so others know where it came from.</p>
                 </div>
                 <div className="feature-media">
                   <img src="/RC_shared_via_RC.png" alt="Shared via RepoChat" loading="lazy" decoding="async" />
