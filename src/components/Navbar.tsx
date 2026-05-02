@@ -34,7 +34,17 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${mobileOpen ? 'menu-open' : ''}`}>
       <div className="nav-inner">
-        <Link to="/" className="nav-logo" onClick={() => setMobileOpen(false)}>
+        <Link 
+          to="/" 
+          className="nav-logo" 
+          onClick={(e) => {
+            if (location.pathname === '/') {
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }
+            setMobileOpen(false)
+          }}
+        >
           <Logo size={28} />
           <span>RepoChat</span>
         </Link>
