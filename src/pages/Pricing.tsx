@@ -1,6 +1,12 @@
-import { Zap, Globe, Check, X, Sparkles, Shield, ArrowRight } from 'lucide-react'
+import { useState, useEffect, useCallback } from 'react'
+import { Zap, Globe, Check, X, Sparkles, Shield, ArrowRight, CheckCircle2 } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
+import AuthModal from '../components/AuthModal'
+import { useAuth } from '../context/AuthContext'
+import { supabase } from '../lib/supabase'
+
+const DODO_PRODUCT_ID = 'pdt_0NdACCVTSZEModHr96UOr'
 
 const freeFeatures = [
   { text: 'Up to 15 Friends', included: true },
@@ -74,6 +80,86 @@ function CellValue({ value }: { value: string | boolean }) {
 }
 
 export default function Pricing() {
+  const { user, profile, loading } = useAuth()
+  const [authModalOpen, setAuthModalOpen] = useState(false)
+  const [checkoutLoading, setCheckoutLoading] = useState(false)
+  const isPro = profile?.is_pro === true
+
+  // After OAuth redirect: if user just signed in and is NOT pro, auto-open checkout
+  const openCheckout = useCallback((userId: string) => {
+    setCheckoutLoading(true)
+    const checkoutUrl = `https://test.checkout.dodopayments.com/buy/${DODO_PRODUCT_ID}?quantity=1&metadata_user_id=${userId}`
+    window.open(checkoutUrl, '_blank')
+
+    // Poll for Pro status (same pattern as UpgradeModal.tsx in extension)
+    let pollCount = 0
+    const maxPolls = 36 // 3 min at 5s intervals
+    const pollInterval = setInterval(async () => {
+      pollCount++
+      try {
+        const { data, error } = await supabase
+          .from('profiles')
+          .select('is_pro')
+          .eq('id', userId)
+          .single()
+
+        if (!error && data?.is_pro) {
+          clearInterval(pollInterval)
+          setCheckoutLoading(false)
+          // Force page re-render by reloading profile
+          window.location.reload()
+          return
+        }
+      } catch { /* ignore */ }
+
+      if (pollCount >= maxPolls) {
+        clearInterval(pollInterval)
+        setCheckoutLoading(false)
+      }
+    }, 5000)
+
+    // Stop loading state after a moment for UX
+    setTimeout(() => setCheckoutLoading(false), 3000)
+  }, [])
+
+  // Detect post-OAuth redirect: user just signed in, should we auto-open checkout?
+  useEffect(() => {
+    if (loading) return
+    if (!user) return
+
+    // Check if this is an OAuth redirect (URL has hash with access_token or we just signed in)
+    const hash = window.location.hash
+    const isOAuthRedirect = hash && hash.includes('access_token')
+
+    if (isOAuthRedirect) {
+      // Clean the URL
+      if (window.history?.replaceState) {
+        window.history.replaceState(null, '', window.location.pathname)
+      }
+    }
+
+    // If user just signed in (from our modal flow) and not Pro, auto-open checkout
+    const pendingCheckout = sessionStorage.getItem('repochat_pending_checkout')
+    if (pendingCheckout === 'true' && !isPro) {
+      sessionStorage.removeItem('repochat_pending_checkout')
+      // Small delay to let the page render
+      setTimeout(() => openCheckout(user.id), 800)
+    }
+  }, [user, loading, isPro, openCheckout])
+
+  const handleUpgradeClick = () => {
+    if (isPro) return // Already Pro, do nothing
+
+    if (!user) {
+      // Not signed in → set flag and open auth modal
+      sessionStorage.setItem('repochat_pending_checkout', 'true')
+      setAuthModalOpen(true)
+    } else {
+      // Signed in but not Pro → go straight to checkout
+      openCheckout(user.id)
+    }
+  }
+
   return (
     <div className="legal-page">
       <div className="container">
@@ -140,11 +226,30 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a href="https://chromewebstore.google.com" target="_blank" rel="noopener noreferrer" className="plan-btn pro">
-                Upgrade to Pro <ArrowRight size={15} />
-              </a>
+
+              {isPro ? (
+                <div className="plan-btn pro-active">
+                  <CheckCircle2 size={16} />
+                  RepoChat Pro Active
+                </div>
+              ) : (
+                <button
+                  className={`plan-btn pro ${checkoutLoading ? 'loading' : ''}`}
+                  onClick={handleUpgradeClick}
+                  disabled={checkoutLoading}
+                >
+                  {checkoutLoading ? 'Opening checkout…' : (
+                    <>Upgrade to Pro <ArrowRight size={15} /></>
+                  )}
+                </button>
+              )}
+
               <p className="plan-footer-note">
-                <Shield size={12} /> Secure checkout via Dodo Payments. Cancel anytime.
+                {isPro ? (
+                  <><CheckCircle2 size={12} /> Your Pro subscription is active.</>
+                ) : (
+                  <><Shield size={12} /> Secure checkout via Dodo Payments. Cancel anytime.</>
+                )}
               </p>
             </div>
           </ScrollReveal>
@@ -195,6 +300,9 @@ export default function Pricing() {
           <ScrollReveal delay={1}><FAQ /></ScrollReveal>
         </div>
       </div>
+
+      {/* Auth Modal */}
+      <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
     </div>
   )
 }
