@@ -8,178 +8,104 @@ interface AuthModalProps {
   onClose: () => void
 }
 
-// Animated, colorful SVG banner representing "Humanity & Computers"
+// Highly Abstract, "Incomprehensible" Geometric/Alien Animation
 function AnimatedIllustration() {
   return (
     <div className="auth-modal-banner-illustration">
-      <svg width="100%" height="100%" viewBox="0 0 320 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 380 420" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
         <defs>
-          {/* Human side gradient (warm, organic) */}
-          <linearGradient id="humanGrad" x1="0" y1="0" x2="160" y2="140">
-            <stop offset="0%" stopColor="#f43f5e" /> {/* Rose */}
-            <stop offset="100%" stopColor="#f59e0b" /> {/* Amber */}
-          </linearGradient>
-          
-          {/* Computer side gradient (cool, structured) */}
-          <linearGradient id="compGrad" x1="160" y1="0" x2="320" y2="140">
-            <stop offset="0%" stopColor="#0ea5e9" /> {/* Sky */}
-            <stop offset="100%" stopColor="#8b5cf6" /> {/* Violet */}
-          </linearGradient>
-
-          {/* Connection glow */}
-          <radialGradient id="glow" cx="160" cy="70" r="80">
-            <stop offset="0%" stopColor="rgba(255,255,255,0.4)" />
+          <radialGradient id="deepVoid" cx="190" cy="210" r="250">
+            <stop offset="0%" stopColor="rgba(139, 92, 246, 0.08)" />
             <stop offset="100%" stopColor="transparent" />
           </radialGradient>
+          
+          <linearGradient id="alienGlow" x1="0" y1="0" x2="380" y2="420">
+            <stop offset="0%" stopColor="#0ea5e9" />
+            <stop offset="50%" stopColor="#8b5cf6" />
+            <stop offset="100%" stopColor="#f43f5e" />
+          </linearGradient>
         </defs>
 
-        {/* Background panel glow */}
-        <motion.rect
-          x="0" y="0" width="320" height="140" rx="16"
-          fill="rgba(255,255,255,0.02)"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        />
+        {/* Base void glow */}
+        <rect x="0" y="0" width="380" height="420" fill="url(#deepVoid)" />
 
-        {/* ========================================== */}
-        {/* LEFT SIDE: Humanity (Organic, Flowing) */}
-        {/* ========================================== */}
-        
-        {/* Organic abstract wave shapes (Brain/Creativity) */}
-        <motion.path
-          d="M 20 100 Q 40 40 80 50 T 130 70"
-          stroke="url(#humanGrad)"
-          strokeWidth="6"
-          strokeLinecap="round"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, ease: "easeInOut" }}
-        />
-        <motion.path
-          d="M 30 120 Q 70 80 100 110 T 140 90"
-          stroke="url(#humanGrad)"
-          strokeWidth="4"
-          strokeLinecap="round"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, ease: "easeInOut", delay: 0.3 }}
-        />
-        
-        {/* Floating human "sparks" (Ideas) */}
-        {[
-          { cx: 40, cy: 60, r: 8 },
-          { cx: 80, cy: 30, r: 5 },
-          { cx: 110, cy: 50, r: 12 },
-        ].map((circle, i) => (
+        {/* Mesmerizing rotating neural/fractal mesh */}
+        <motion.g
+          initial={{ rotate: 0, scale: 0.9 }}
+          animate={{ rotate: 360, scale: [0.9, 1.15, 0.9] }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          style={{ originX: "190px", originY: "210px" }}
+        >
+          {Array.from({ length: 16 }).map((_, i) => {
+            const angle = (i / 16) * Math.PI * 2;
+            const x1 = 190 + Math.cos(angle) * 180;
+            const y1 = 210 + Math.sin(angle) * 180;
+            const x2 = 190 + Math.cos(angle * 2.5) * 80;
+            const y2 = 210 + Math.sin(angle * 2.5) * 80;
+            return (
+              <motion.path
+                key={`mesh-${i}`}
+                d={`M 190 210 Q ${x2} ${y2} ${x1} ${y1} T ${190 + Math.cos(angle + Math.PI) * 150} ${210 + Math.sin(angle + Math.PI) * 150}`}
+                stroke="url(#alienGlow)"
+                strokeWidth="1"
+                fill="none"
+                opacity="0.3"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 4, delay: i * 0.1, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+              />
+            )
+          })}
+        </motion.g>
+
+        {/* Strange geometric intersecting rings */}
+        <motion.g
+          initial={{ rotate: 360 }}
+          animate={{ rotate: 0 }}
+          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+          style={{ originX: "190px", originY: "210px" }}
+        >
+          <circle cx="190" cy="210" r="140" stroke="rgba(14, 165, 233, 0.15)" strokeWidth="1" strokeDasharray="10 30" fill="none" />
+          <circle cx="190" cy="210" r="100" stroke="rgba(244, 63, 94, 0.15)" strokeWidth="1" strokeDasharray="5 15" fill="none" />
+          
+          {/* Orbital anomalies */}
           <motion.circle
-            key={`h-${i}`}
-            cx={circle.cx}
-            cy={circle.cy}
-            r={circle.r}
-            fill="url(#humanGrad)"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: [0, 1.2, 1], opacity: 0.8 }}
-            transition={{ duration: 0.8, delay: 1 + i * 0.2 }}
+            cx="190" cy="70" r="3" fill="#0ea5e9"
+            animate={{ scale: [1, 2, 1], opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
           />
-        ))}
+          <motion.circle
+            cx="330" cy="210" r="2" fill="#8b5cf6"
+            animate={{ scale: [1, 3, 1], opacity: [0.3, 0.8, 0.3] }}
+            transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+          />
+          <motion.circle
+            cx="50" cy="210" r="4" fill="#f43f5e"
+            animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0.9, 0.4] }}
+            transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+          />
+        </motion.g>
 
-        {/* ========================================== */}
-        {/* RIGHT SIDE: Computers (Structured, Code) */}
-        {/* ========================================== */}
-        
-        {/* Abstract Laptop / Screen */}
-        <motion.rect
-          x="190" y="40" width="100" height="60" rx="4"
-          stroke="url(#compGrad)"
-          strokeWidth="3"
-          fill="rgba(14, 165, 233, 0.1)"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        />
-        <motion.rect
-          x="180" y="100" width="120" height="6" rx="3"
-          fill="url(#compGrad)"
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-        />
-
-        {/* Code elements inside screen */}
+        {/* Abstract mathematical sine waves rippling through space */}
         <motion.path
-          d="M 205 60 L 215 70 L 205 80"
-          stroke="#0ea5e9"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-        />
-        <motion.path
-          d="M 230 60 L 220 70 L 230 80"
-          stroke="#0ea5e9"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 0.8, delay: 1.7 }}
-        />
-        <motion.line
-          x1="240" y1="70" x2="270" y2="70"
-          stroke="#8b5cf6"
-          strokeWidth="4"
-          strokeLinecap="round"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 0.5, delay: 2.0 }}
-        />
-
-        {/* ========================================== */}
-        {/* CENTER: The Connection (Data flow) */}
-        {/* ========================================== */}
-
-        {/* Central glowing orb */}
-        <motion.circle
-          cx="160" cy="70" r="15"
-          fill="url(#glow)"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: [1, 1.2, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* Data lines connecting human and computer */}
-        <motion.path
-          d="M 120 70 L 200 70"
-          stroke="url(#compGrad)"
+          d="M -50 210 Q 50 100 190 210 T 430 210"
+          stroke="url(#alienGlow)"
           strokeWidth="2"
-          strokeDasharray="4 4"
           fill="none"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 1.5, delay: 2.5 }}
+          opacity="0.4"
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 20, opacity: 0.5 }}
+          transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
         />
-        
-        {/* Pulsing data packets */}
-        <motion.circle
-          cx="130" cy="70" r="3"
-          fill="#fff"
-          initial={{ x: 0, opacity: 0 }}
-          animate={{ x: 60, opacity: [0, 1, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, delay: 3 }}
-        />
-        <motion.circle
-          cx="130" cy="70" r="3"
-          fill="#fff"
-          initial={{ x: 0, opacity: 0 }}
-          animate={{ x: 60, opacity: [0, 1, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, delay: 3.75 }}
+        <motion.path
+          d="M -50 210 Q 50 320 190 210 T 430 210"
+          stroke="url(#alienGlow)"
+          strokeWidth="1"
+          fill="none"
+          opacity="0.2"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: -20, opacity: 0.3 }}
+          transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 1 }}
         />
 
       </svg>
