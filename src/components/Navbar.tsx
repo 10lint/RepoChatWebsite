@@ -76,7 +76,6 @@ export default function Navbar() {
           <li><Link to="/features">Features</Link></li>
           <li><Link to="/pricing">Pricing</Link></li>
           <li><Link to="/security">Security</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
         </ul>
 
         {/* Desktop Avatar — right aligned */}
@@ -167,7 +166,6 @@ export default function Navbar() {
               <li><Link to="/features" onClick={() => setMobileOpen(false)}>Features</Link></li>
               <li><Link to="/pricing" onClick={() => setMobileOpen(false)}>Pricing</Link></li>
               <li><Link to="/security" onClick={() => setMobileOpen(false)}>Security</Link></li>
-              <li><Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link></li>
             </ul>
 
             {!loading && user ? (
