@@ -1637,7 +1637,8 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .mobile-signin-btn:hover {
-  background: #7c3aed;
+  background: #2563eb;
+  border-color: #2563eb;
 }
 
 .mobile-signin-btn:active {
