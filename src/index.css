@@ -1797,7 +1797,7 @@ textarea.form-input{min-height:110px;resize:vertical}
 /* ============================================
    AUTH MODAL TABLET UPSCALING
    ============================================ */
-@media (min-width: 481px) and (max-width: 1024px) {
+@media (min-width: 481px) and (max-width: 1024px) and (pointer: coarse) {
   .auth-modal-card {
     max-width: 520px;
     padding: 56px 48px 48px;
