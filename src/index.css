@@ -1657,6 +1657,7 @@ textarea.form-input{min-height:110px;resize:vertical}
   overscroll-behavior: contain;
 }
 
+html.modal-open,
 body.modal-open {
   overflow: hidden !important;
 }
