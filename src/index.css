@@ -1602,9 +1602,9 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .nav-signin-btn:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
+  background: #fff;
+  color: #000;
+  border-color: #fff;
 }
 
 .nav-signin-btn:active {
@@ -1785,10 +1785,9 @@ body.modal-open {
 }
 
 .auth-modal-github-btn:hover {
-  background: #2d333b;
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
+  background: #fff;
+  color: #000;
+  border-color: #fff;
 }
 
 .auth-modal-github-btn:active {
