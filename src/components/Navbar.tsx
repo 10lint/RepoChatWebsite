@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, LogOut, Sparkles } from 'lucide-react'
+import { LogOut, Sparkles } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from './Logo'
 import { useAuth } from '../context/AuthContext'
@@ -147,18 +147,34 @@ export default function Navbar() {
         {/* Mobile: hamburger only */}
         <div className="nav-right-mobile">
           <button className="nav-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={mobileOpen ? 'close' : 'open'}
-                initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
-                animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
-                transition={{ duration: 0.15, ease: "easeOut" }}
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-              >
-                {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-              </motion.div>
-            </AnimatePresence>
+            <motion.svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              animate={mobileOpen ? "open" : "closed"}
+            >
+              <motion.line
+                x1="4" y1="9" x2="20" y2="9"
+                variants={{
+                  closed: { x1: 4, y1: 9, x2: 20, y2: 9 },
+                  open: { x1: 5, y1: 5, x2: 19, y2: 19 }
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
+              <motion.line
+                x1="4" y1="15" x2="20" y2="15"
+                variants={{
+                  closed: { x1: 4, y1: 15, x2: 20, y2: 15 },
+                  open: { x1: 5, y1: 19, x2: 19, y2: 5 }
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
+            </motion.svg>
           </button>
         </div>
       </div>
