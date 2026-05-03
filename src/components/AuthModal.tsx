@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
@@ -115,6 +116,17 @@ function AnimatedIllustration() {
 
 export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
   const { signIn } = useAuth()
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('modal-open')
+    } else {
+      document.body.classList.remove('modal-open')
+    }
+    return () => {
+      document.body.classList.remove('modal-open')
+    }
+  }, [isOpen])
 
   const handleSignIn = async () => {
     await signIn()

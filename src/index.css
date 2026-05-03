@@ -1654,6 +1654,11 @@ textarea.form-input{min-height:110px;resize:vertical}
   display: flex;
   padding: 24px;
   overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+body.modal-open {
+  overflow: hidden !important;
 }
 
 .auth-modal-backdrop {
