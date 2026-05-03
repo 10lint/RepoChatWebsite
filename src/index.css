@@ -160,10 +160,10 @@ html.nav-open-lock body {
 /* ============================================
    BUTTONS
    ============================================ */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;border-radius:999px;font-weight:600;font-size:.875rem;transition:all 0.4s var(--ease);cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;border-radius:999px;font-weight:600;font-size:.875rem;transition:all 0.15s ease;cursor:pointer}
 .btn:active{transform:scale(.97)}
 .btn-primary{background-color:var(--accent);color:#fff}
-.btn-primary:hover{transform:none;box-shadow:none}
+.btn-primary:hover{background-color:#7c3aed;transform:none;box-shadow:none}
 .btn-white{background-color:#fff;color:#111113}
 .btn-white:hover{background-color:#f4f4f5;box-shadow:none;transform:none}
 .btn-ghost{background-color:transparent;color:var(--text-secondary);border:1px solid var(--border)}
@@ -566,6 +566,7 @@ html.nav-open-lock body {
 }
 
 .plan-btn.pro:hover {
+  background-color: #7c3aed;
   transform: none;
   box-shadow: none;
 }
@@ -1638,6 +1639,8 @@ textarea.form-input{min-height:110px;resize:vertical}
 }
 
 .mobile-signin-btn:hover {
+  background-color: #7c3aed;
+  border-color: #7c3aed;
   transform: none;
   box-shadow: none;
 }
@@ -1787,6 +1790,8 @@ body.modal-open {
 }
 
 .auth-modal-github-btn:hover {
+  background-color: #1c2126;
+  border-color: #1c2126;
   transform: none;
   box-shadow: none;
 }
